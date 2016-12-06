@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class Dictionary: NSObject {
+public class Dictionary: NSObject {
     enum UpdateStatus {
         case success
         case failure
@@ -25,5 +25,33 @@ class Dictionary: NSObject {
     */
     func update(onCompletion:CompletionClosure, onProgress:ProgressClosure) -> Void {
         
+    }
+    
+    // MARK: - For debugging
+    
+    public func storeTestEntry() -> Void {
+        let context = dataController.getContext()
+        
+        let entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as! Entry
+        let chineseEntry = NSEntityDescription.insertNewObject(forEntityName: "ChineseEntry", into: context) as! ChineseEntry
+        let englishEntry = NSEntityDescription.insertNewObject(forEntityName: "EnglishEntry", into: context) as! EnglishEntry
+        
+        chineseEntry.pinyin = "mao1"
+        chineseEntry.simplified = "猫"
+        chineseEntry.traditional = "貓"
+        
+        englishEntry.english = "cat"
+        
+        entry.inChinese = chineseEntry
+        entry.inEnglish = englishEntry
+        
+        do {
+            try context.save()
+            print("Saved")
+        } catch let error as NSError {
+            print(error)
+        } catch {
+            print("?")
+        }
     }
 }

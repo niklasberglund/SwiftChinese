@@ -14,7 +14,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let dataController = DataController()
+        let dictionary = SwiftChinese.Dictionary()
+        
         print(dataController)
+        dictionary.storeTestEntry()
+        
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 

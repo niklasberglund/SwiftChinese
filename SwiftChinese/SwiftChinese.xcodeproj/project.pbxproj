@@ -14,6 +14,7 @@
 		8526338C1DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633861DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift */; };
 		8526338D1DF6BB5B00621DBA /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */; };
 		8526338E1DF6BB5B00621DBA /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633881DF6BB5B00621DBA /* Entry+CoreDataProperties.swift */; };
+		852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -149,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */,
+				852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
