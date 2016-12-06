@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		852633761DF5D64000621DBA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		852633751DF5D64000621DBA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChinese.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftChinese.h; sourceTree = "<group>"; };
 		85F7F19E1DF131FA00F4FBFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */,
+				852633751DF5D64000621DBA /* Dictionary.swift */,
 				85F7F19E1DF131FA00F4FBFB /* Info.plist */,
 				85F7F1B71DF1344600F4FBFB /* Core Data */,
 			);
@@ -227,6 +230,7 @@
 			files = (
 				85F7F1BA1DF1347D00F4FBFB /* DictionaryModel.xcdatamodeld in Sources */,
 				85F7F1BC1DF134EF00F4FBFB /* DataController.swift in Sources */,
+				852633761DF5D64000621DBA /* Dictionary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +438,7 @@
 				85F7F1B01DF131FA00F4FBFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		85F7F1B11DF131FA00F4FBFB /* Build configuration list for PBXNativeTarget "SwiftChineseTests" */ = {
 			isa = XCConfigurationList;
@@ -442,6 +447,7 @@
 				85F7F1B31DF131FA00F4FBFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
