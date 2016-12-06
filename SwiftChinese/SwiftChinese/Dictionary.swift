@@ -42,8 +42,11 @@ public class Dictionary: NSObject {
         
         englishEntry.english = "cat"
         
+        var englishSet = Set<EnglishEntry>()
+        englishSet.insert(englishEntry)
+
         entry.inChinese = chineseEntry
-        entry.inEnglish = englishEntry
+        entry.inEnglish = englishSet as NSSet
         
         do {
             try context.save()

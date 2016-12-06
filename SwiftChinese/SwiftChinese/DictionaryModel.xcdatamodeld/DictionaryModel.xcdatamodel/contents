@@ -14,7 +14,7 @@
         <attribute name="added" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="mofified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="inChinese" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChineseEntry" inverseName="inEntry" inverseEntity="ChineseEntry" syncable="YES"/>
-        <relationship name="inEnglish" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnglishEntry" inverseName="inEntry" inverseEntity="EnglishEntry" syncable="YES"/>
+        <relationship name="inEnglish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EnglishEntry" inverseName="inEntry" inverseEntity="EnglishEntry" syncable="YES"/>
     </entity>
     <elements>
         <element name="ChineseEntry" positionX="-54" positionY="-9" width="128" height="105"/>
