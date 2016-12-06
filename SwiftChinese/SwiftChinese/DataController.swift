@@ -36,4 +36,8 @@ public class DataController: NSObject {
             fatalError("Error migrating store: \(error)")
         }
     }
+    
+    public func getContext() -> NSManagedObjectContext {
+        return managedObjectContext
+    }
 }
