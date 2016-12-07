@@ -12,9 +12,18 @@ public class Translation : NSObject {
     var pinyin : String
     var simplifiedChinese : String
     var traditionalChinese : String
-    var english : Array<String>
+    var englishDefinitions : Array<String>
     
-    private var entry : Entry
+    private var entry : Entry?
+    
+    init(pinyin: String, simplifiedChinese: String, traditionalChinese: String, englishDefinitions: Array<String>) {
+        self.entry = nil
+        
+        self.pinyin = pinyin
+        self.simplifiedChinese = simplifiedChinese
+        self.traditionalChinese = traditionalChinese
+        self.englishDefinitions = englishDefinitions
+    }
     
     init(entry : Entry) {
         self.entry = entry
@@ -22,6 +31,6 @@ public class Translation : NSObject {
         self.pinyin = ""
         self.simplifiedChinese = ""
         self.traditionalChinese = ""
-        self.english = []
+        self.englishDefinitions = []
     }
 }

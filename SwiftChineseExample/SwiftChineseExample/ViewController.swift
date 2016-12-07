@@ -19,8 +19,9 @@ class ViewController: UIViewController {
         print(dataController)
         dictionary.storeTestEntry()
         
-        
-        // Do any additional setup after loading the view, typically from a nib.
+        let dictionaryUrl = URL(fileURLWithPath: "/Users/niklas/Downloads/cedict_ts.u8-3")
+        let importer = Importer(forDictionaryAtUrl: dictionaryUrl)
+        importer.insertAllEntries()
     }
 
     override func didReceiveMemoryWarning() {
