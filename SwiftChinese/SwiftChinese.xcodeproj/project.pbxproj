@@ -15,6 +15,7 @@
 		8526338D1DF6BB5B00621DBA /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */; };
 		852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
 		852633A31DF7290500621DBA /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */; };
+		852633A61DF8112A00621DBA /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A51DF8112A00621DBA /* Translation.swift */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -41,6 +42,7 @@
 		852633861DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EnglishEntry+CoreDataProperties.swift"; path = "../EnglishEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Entry+CoreDataClass.swift"; path = "../Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Entry+CoreDataProperties.swift"; path = "../Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		852633A51DF8112A00621DBA /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChinese.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftChinese.h; sourceTree = "<group>"; };
 		85F7F19E1DF131FA00F4FBFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */,
 				852633751DF5D64000621DBA /* Dictionary.swift */,
+				852633A51DF8112A00621DBA /* Translation.swift */,
 				85F7F19E1DF131FA00F4FBFB /* Info.plist */,
 				85F7F1B71DF1344600F4FBFB /* Core Data */,
 			);
@@ -265,6 +268,7 @@
 				8526338A1DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift in Sources */,
 				85F7F1BC1DF134EF00F4FBFB /* DataController.swift in Sources */,
 				852633761DF5D64000621DBA /* Dictionary.swift in Sources */,
+				852633A61DF8112A00621DBA /* Translation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
