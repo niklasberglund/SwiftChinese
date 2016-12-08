@@ -12,6 +12,7 @@
     </entity>
     <entity name="Entry" representedClassName="Entry" syncable="YES">
         <attribute name="added" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="entryLineHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mofified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="inChinese" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChineseEntry" inverseName="inEntry" inverseEntity="ChineseEntry" syncable="YES"/>
         <relationship name="inEnglish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EnglishEntry" inverseName="inEntry" inverseEntity="EnglishEntry" syncable="YES"/>
@@ -19,6 +20,6 @@
     <elements>
         <element name="ChineseEntry" positionX="-54" positionY="-9" width="128" height="105"/>
         <element name="EnglishEntry" positionX="-36" positionY="9" width="128" height="75"/>
-        <element name="Entry" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Entry" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>
