@@ -2,7 +2,7 @@
 //  Entry+CoreDataProperties.swift
 //  SwiftChinese
 //
-//  Created by Niklas Berglund on 2016-12-07.
+//  Created by Niklas Berglund on 2016-12-08.
 //  Copyright © 2016 Klurig. All rights reserved.
 //
 
@@ -17,7 +17,8 @@ extension Entry {
     }
 
     @NSManaged public var added: NSDate?
-    @NSManaged public var mofified: NSDate?
+    @NSManaged public var lastMofified: NSDate?
+    @NSManaged public var entryLineHash: String?
     @NSManaged public var inChinese: ChineseEntry?
     @NSManaged public var inEnglish: NSSet?
 
