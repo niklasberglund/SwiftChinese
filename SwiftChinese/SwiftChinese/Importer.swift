@@ -33,7 +33,7 @@ public class Importer: NSObject {
         for line in lines {
             // Ingore empty and commented out lines
             if (line.characters.first != "#" && line != "") {
-                translationObjects.append(translationObject(fromLine: line))
+                translationObjects.append(Translation(populateFromLine: line))
                 
                 // Hard coded limit useful when developing. TODO: remove
                 i = i+1;
@@ -44,47 +44,6 @@ public class Importer: NSObject {
         }
         
         return translationObjects
-    }
-    
-    func translationObject(fromLine: String) -> Translation {
-        debugPrint("fromLine: " + fromLine)
-        let scanner = Scanner(string: fromLine)
-        
-        var simplifiedChinese : NSString?
-        scanner.scanUpTo(" ", into:&simplifiedChinese)
-        
-        var traditionalChinese : NSString?
-        scanner.scanUpTo(" ", into: &traditionalChinese)
-        
-        var pinyin : NSString?
-        scanner.scanLocation = scanner.scanLocation + 2 // Step to pinyin
-        scanner.scanUpTo("]", into: &pinyin)
-        
-        // Step to English definitions
-        scanner.scanLocation = scanner.scanLocation + 3
-        
-        var englishDefintions = Array<String>()
-        
-        while (scanner.isAtEnd == false) {
-            var englishDefinition : NSString?
-            scanner.scanUpTo("/", into: &englishDefinition)
-            scanner.scanLocation = scanner.scanLocation + 1
-            englishDefintions.append(englishDefinition as! String)
-        }
-        
-        //debugPrint(simplifiedChinese!)
-        //debugPrint(traditionalChinese!)
-        //debugPrint(pinyin!)
-        //debugPrint(englishDefinitions)
-        
-        let translation = Translation(
-            pinyin: pinyin as! String,
-            simplifiedChinese: simplifiedChinese as! String,
-            traditionalChinese: traditionalChinese as! String,
-            englishDefinitions: englishDefintions
-        )
-        
-        return translation
     }
     
 }

@@ -25,6 +25,19 @@ public class Translation : NSObject {
         self.englishDefinitions = englishDefinitions
     }
     
+    init(populateFromLine: String) {
+        self.entry = nil
+        
+        self.pinyin = ""
+        self.simplifiedChinese = ""
+        self.traditionalChinese = ""
+        self.englishDefinitions = []
+        
+        super.init()
+        
+        populate(fromLine: populateFromLine)
+    }
+    
     init(entry : Entry) {
         self.entry = entry
         
@@ -32,5 +45,42 @@ public class Translation : NSObject {
         self.simplifiedChinese = ""
         self.traditionalChinese = ""
         self.englishDefinitions = []
+    }
+    
+    func populate(fromLine: String) -> Void {
+        debugPrint("fromLine: " + fromLine)
+        let scanner = Scanner(string: fromLine)
+        
+        var simplifiedChinese : NSString?
+        scanner.scanUpTo(" ", into:&simplifiedChinese)
+        
+        var traditionalChinese : NSString?
+        scanner.scanUpTo(" ", into: &traditionalChinese)
+        
+        var pinyin : NSString?
+        scanner.scanLocation = scanner.scanLocation + 2 // Step to pinyin
+        scanner.scanUpTo("]", into: &pinyin)
+        
+        // Step to English definitions
+        scanner.scanLocation = scanner.scanLocation + 3
+        
+        var englishDefintionsArray = Array<String>()
+        
+        while (scanner.isAtEnd == false) {
+            var englishDefinition : NSString?
+            scanner.scanUpTo("/", into: &englishDefinition)
+            scanner.scanLocation = scanner.scanLocation + 1
+            englishDefintionsArray.append(englishDefinition as! String)
+        }
+        
+        self.pinyin = pinyin as! String
+        self.simplifiedChinese = simplifiedChinese as! String
+        self.traditionalChinese = traditionalChinese as! String
+        self.englishDefinitions = englishDefintionsArray
+        
+        //debugPrint(simplifiedChinese!)
+        //debugPrint(traditionalChinese!)
+        //debugPrint(pinyin!)
+        //debugPrint(englishDefinitions)
     }
 }
