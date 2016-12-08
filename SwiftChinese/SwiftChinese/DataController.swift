@@ -25,6 +25,7 @@ public class DataController: NSObject {
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
         self.managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         self.managedObjectContext.persistentStoreCoordinator = psc
+        self.managedObjectContext.undoManager = nil
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let docUrl = urls[urls.endIndex-1]
