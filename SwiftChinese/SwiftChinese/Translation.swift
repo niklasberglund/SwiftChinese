@@ -13,17 +13,9 @@ public class Translation : NSObject {
     var simplifiedChinese : String
     var traditionalChinese : String
     var englishDefinitions : Array<String>
+    var lineHash : String
     
     private var entry : Entry?
-    
-    init(pinyin: String, simplifiedChinese: String, traditionalChinese: String, englishDefinitions: Array<String>) {
-        self.entry = nil
-        
-        self.pinyin = pinyin
-        self.simplifiedChinese = simplifiedChinese
-        self.traditionalChinese = traditionalChinese
-        self.englishDefinitions = englishDefinitions
-    }
     
     init(populateFromLine: String) {
         self.entry = nil
@@ -32,6 +24,7 @@ public class Translation : NSObject {
         self.simplifiedChinese = ""
         self.traditionalChinese = ""
         self.englishDefinitions = []
+        self.lineHash = ""
         
         super.init()
         
@@ -45,10 +38,14 @@ public class Translation : NSObject {
         self.simplifiedChinese = ""
         self.traditionalChinese = ""
         self.englishDefinitions = []
+        self.lineHash = ""
     }
     
     func populate(fromLine: String) -> Void {
-        debugPrint("fromLine: " + fromLine)
+        //debugPrint("fromLine: " + fromLine)
+        
+        self.lineHash = fromLine.md5()
+        
         let scanner = Scanner(string: fromLine)
         
         var simplifiedChinese : NSString?
@@ -78,6 +75,7 @@ public class Translation : NSObject {
         self.traditionalChinese = traditionalChinese as! String
         self.englishDefinitions = englishDefintionsArray
         
+        //debugPrint(self.lineHash)
         //debugPrint(simplifiedChinese!)
         //debugPrint(traditionalChinese!)
         //debugPrint(pinyin!)
