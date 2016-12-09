@@ -31,7 +31,9 @@ public class DataController: NSObject {
         let docUrl = urls[urls.endIndex-1]
         
         let storeUrl = docUrl.appendingPathComponent("DictionaryModel.sqlite")
+        
         do {
+            //try FileManager.default.removeItem(at: storeUrl)
             try psc.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeUrl, options: nil)
         } catch {
             fatalError("Error migrating store: \(error)")
