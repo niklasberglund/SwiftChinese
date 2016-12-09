@@ -1,0 +1,11 @@
+//
+//  CommonCrypto.xcconfig
+//  SwiftChinese
+//
+//  Created by Niklas Berglund on 2016-12-09.
+//  Copyright © 2016 Klurig. All rights reserved.
+//
+
+MODULEMAP_FILE[sdk=iphoneos*] = $(SRCROOT)/CommonCrypto/iphoneos.modulemap
+MODULEMAP_FILE[sdk=iphonesimulator*] = $(SRCROOT)/CommonCrypto/iphonesimulator.modulemap
+MODULEMAP_FILE[sdk=macosx*] = $(SRCROOT)/CommonCrypto/macosx.modulemap

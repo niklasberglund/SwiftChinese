@@ -47,6 +47,12 @@
 		852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Entry+CoreDataProperties.swift"; path = "../Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		852633A51DF8112A00621DBA /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		852633A71DF8171E00621DBA /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		85D299F71DFA8993003895F4 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85D299FA1DFA8993003895F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CommonCrypto.xcconfig; sourceTree = "<group>"; };
+		85D29A001DFA89ED003895F4 /* iphoneos.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = iphoneos.modulemap; sourceTree = "<group>"; };
+		85D29A011DFA8A03003895F4 /* iphonesimulator.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = iphonesimulator.modulemap; sourceTree = "<group>"; };
+		85D29A021DFA8A1C003895F4 /* macosx.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = macosx.modulemap; sourceTree = "<group>"; };
 		85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftChinese.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftChinese.h; sourceTree = "<group>"; };
 		85F7F19E1DF131FA00F4FBFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,6 +65,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		85D299F31DFA8993003895F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85F7F1961DF131FA00F4FBFB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -91,11 +104,24 @@
 			name = "NSManagedObject subclasses";
 			sourceTree = "<group>";
 		};
+		85D299F81DFA8993003895F4 /* CommonCrypto */ = {
+			isa = PBXGroup;
+			children = (
+				85D299FA1DFA8993003895F4 /* Info.plist */,
+				85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */,
+				85D29A001DFA89ED003895F4 /* iphoneos.modulemap */,
+				85D29A011DFA8A03003895F4 /* iphonesimulator.modulemap */,
+				85D29A021DFA8A1C003895F4 /* macosx.modulemap */,
+			);
+			path = CommonCrypto;
+			sourceTree = "<group>";
+		};
 		85F7F1901DF131FA00F4FBFB = {
 			isa = PBXGroup;
 			children = (
 				85F7F19C1DF131FA00F4FBFB /* SwiftChinese */,
 				85F7F1A71DF131FA00F4FBFB /* SwiftChineseTests */,
+				85D299F81DFA8993003895F4 /* CommonCrypto */,
 				85F7F19B1DF131FA00F4FBFB /* Products */,
 				85F7F1B41DF132BD00F4FBFB /* Frameworks */,
 			);
@@ -106,6 +132,7 @@
 			children = (
 				85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */,
 				85F7F1A31DF131FA00F4FBFB /* SwiftChineseTests.xctest */,
+				85D299F71DFA8993003895F4 /* CommonCrypto.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,6 +180,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		85D299F41DFA8993003895F4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85F7F1971DF131FA00F4FBFB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,6 +201,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		85D299F61DFA8993003895F4 /* CommonCrypto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 85D299FE1DFA8993003895F4 /* Build configuration list for PBXNativeTarget "CommonCrypto" */;
+			buildPhases = (
+				85D299F21DFA8993003895F4 /* Sources */,
+				85D299F31DFA8993003895F4 /* Frameworks */,
+				85D299F41DFA8993003895F4 /* Headers */,
+				85D299F51DFA8993003895F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CommonCrypto;
+			productName = CommonCrypto;
+			productReference = 85D299F71DFA8993003895F4 /* CommonCrypto.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		85F7F1991DF131FA00F4FBFB /* SwiftChinese */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 85F7F1AE1DF131FA00F4FBFB /* Build configuration list for PBXNativeTarget "SwiftChinese" */;
@@ -213,6 +265,11 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Klurig;
 				TargetAttributes = {
+					85D299F61DFA8993003895F4 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = N95Z7TWCA8;
+						ProvisioningStyle = Automatic;
+					};
 					85F7F1991DF131FA00F4FBFB = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = N95Z7TWCA8;
@@ -240,11 +297,19 @@
 			targets = (
 				85F7F1991DF131FA00F4FBFB /* SwiftChinese */,
 				85F7F1A21DF131FA00F4FBFB /* SwiftChineseTests */,
+				85D299F61DFA8993003895F4 /* CommonCrypto */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		85D299F51DFA8993003895F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85F7F1981DF131FA00F4FBFB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -262,6 +327,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		85D299F21DFA8993003895F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		85F7F1951DF131FA00F4FBFB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -299,6 +371,46 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		85D299FC1DFA8993003895F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N95Z7TWCA8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CommonCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.CommonCrypto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		85D299FD1DFA8993003895F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = N95Z7TWCA8;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = CommonCrypto/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.CommonCrypto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		85F7F1AC1DF131FA00F4FBFB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -468,6 +580,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		85D299FE1DFA8993003895F4 /* Build configuration list for PBXNativeTarget "CommonCrypto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85D299FC1DFA8993003895F4 /* Debug */,
+				85D299FD1DFA8993003895F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		85F7F1941DF131FA00F4FBFB /* Build configuration list for PBXProject "SwiftChinese" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
