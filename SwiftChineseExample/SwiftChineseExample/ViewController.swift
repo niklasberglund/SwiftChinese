@@ -21,7 +21,7 @@ class ViewController: UIViewController {
         
         let dictionaryUrl = URL(fileURLWithPath: "/Users/niklas/Downloads/cedict_ts.u8-3")
         let importer = Importer(forDictionaryAtUrl: dictionaryUrl)
-        importer.insertAllEntries()
+        importer.insertAllEntries(dictionary: dictionary)
     }
 
     override func didReceiveMemoryWarning() {

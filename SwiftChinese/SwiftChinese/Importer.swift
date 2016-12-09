@@ -20,8 +20,14 @@ public class Importer: NSObject {
         }
     }
     
-    public func insertAllEntries() -> Void {
-        debugPrint(translationObjects(fromDictionaryString: self.dictionaryString))
+    public func insertAllEntries(dictionary: Dictionary) -> Void {
+        //debugPrint(translationObjects(fromDictionaryString: self.dictionaryString))
+        
+        let translationArray = translationObjects(fromDictionaryString: self.dictionaryString)
+        
+        for translation in translationArray {
+            dictionary.insert(translation: translation)
+        }
     }
     
     func translationObjects(fromDictionaryString: String) -> Array<Translation> {
