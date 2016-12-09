@@ -18,7 +18,7 @@ extension Entry {
 
     @NSManaged public var added: NSDate?
     @NSManaged public var lastMofified: NSDate?
-    @NSManaged public var entryLineHash: String?
+    @NSManaged public var lineHash: String?
     @NSManaged public var inChinese: ChineseEntry?
     @NSManaged public var inEnglish: NSSet?
 

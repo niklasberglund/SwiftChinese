@@ -52,7 +52,7 @@ public class Dictionary: NSObject {
         entry.inEnglish = englishEntries as NSSet
         
         entry.added = Date() as NSDate
-        entry.entryLineHash = translation.lineHash
+        entry.lineHash = translation.lineHash
         entry.lastMofified = Date() as NSDate
         
         do {
