@@ -86,6 +86,10 @@ public class Dictionary: NSObject {
         entry.inChinese = chineseEntry
         entry.inEnglish = englishSet as NSSet
         
+        entry.added = Date() as NSDate
+        entry.lineHash = "dummy-hash".md5()
+        entry.lastMofified = Date() as NSDate
+        
         do {
             try context.save()
             print("Saved")
