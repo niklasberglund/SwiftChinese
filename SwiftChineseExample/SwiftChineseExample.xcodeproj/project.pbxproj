@@ -18,6 +18,41 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		852574711DFD3D920034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 561CDD66D5A3F379740946A2A98C041F;
+			remoteInfo = "Pods-CommonCrypto";
+		};
+		852574731DFD3D920034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1B51124A870FE402AC63457F48B1169C;
+			remoteInfo = "Pods-SwiftChinese";
+		};
+		852574751DFD3D920034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B1C1C2FB5752D53557FB5A07655297D;
+			remoteInfo = "Pods-SwiftChineseTests";
+		};
+		852574771DFD3D920034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9A1F6192B86DA233090953CED255D602;
+			remoteInfo = SSZipArchive;
+		};
+		8525747B1DFD3D920034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 85F7F1E91DF1395100F4FBFB /* SwiftChinese.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 85D299F71DFA8993003895F4;
+			remoteInfo = CommonCrypto;
+		};
 		852633721DF13A4A00621DBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85F7F1E91DF1395100F4FBFB /* SwiftChinese.xcodeproj */;
@@ -63,6 +98,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8525746A1DFD3D910034993D /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = ../SwiftChinese/Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		85F7F1C61DF1393D00F4FBFB /* SwiftChineseExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftChineseExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F7F1C91DF1393D00F4FBFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85F7F1CB1DF1393D00F4FBFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,9 +131,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8525746B1DFD3D910034993D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				852574721DFD3D920034993D /* Pods_CommonCrypto.framework */,
+				852574741DFD3D920034993D /* Pods_SwiftChinese.framework */,
+				852574761DFD3D920034993D /* Pods_SwiftChineseTests.framework */,
+				852574781DFD3D920034993D /* SSZipArchive.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		85F7F1BD1DF1393D00F4FBFB = {
 			isa = PBXGroup;
 			children = (
+				8525746A1DFD3D910034993D /* Pods.xcodeproj */,
 				85F7F1E91DF1395100F4FBFB /* SwiftChinese.xcodeproj */,
 				85F7F1C81DF1393D00F4FBFB /* SwiftChineseExample */,
 				85F7F1DD1DF1393D00F4FBFB /* SwiftChineseExampleTests */,
@@ -141,6 +189,7 @@
 			children = (
 				85F7F1EF1DF1395100F4FBFB /* SwiftChinese.framework */,
 				85F7F1F11DF1395100F4FBFB /* SwiftChineseTests.xctest */,
+				8525747C1DFD3D920034993D /* CommonCrypto.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,6 +270,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 8525746B1DFD3D910034993D /* Products */;
+					ProjectRef = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+				},
+				{
 					ProductGroup = 85F7F1EA1DF1395100F4FBFB /* Products */;
 					ProjectRef = 85F7F1E91DF1395100F4FBFB /* SwiftChinese.xcodeproj */;
 				},
@@ -234,6 +287,41 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		852574721DFD3D920034993D /* Pods_CommonCrypto.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_CommonCrypto.framework;
+			remoteRef = 852574711DFD3D920034993D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		852574741DFD3D920034993D /* Pods_SwiftChinese.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_SwiftChinese.framework;
+			remoteRef = 852574731DFD3D920034993D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		852574761DFD3D920034993D /* Pods_SwiftChineseTests.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Pods_SwiftChineseTests.framework;
+			remoteRef = 852574751DFD3D920034993D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		852574781DFD3D920034993D /* SSZipArchive.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SSZipArchive.framework;
+			remoteRef = 852574771DFD3D920034993D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8525747C1DFD3D920034993D /* CommonCrypto.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CommonCrypto.framework;
+			remoteRef = 8525747B1DFD3D920034993D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		85F7F1EF1DF1395100F4FBFB /* SwiftChinese.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
