@@ -19,8 +19,7 @@ class ViewController: UIViewController {
         print(dataController)
         dictionary.storeTestEntry()
         
-        let dictionaryUrl = URL(fileURLWithPath: "/Users/niklas/Downloads/cedict_ts.u8-3")
-        let importer = Importer(forDictionaryAtUrl: dictionaryUrl)
+        let importer = Importer()
         importer.insertAllEntries(dictionary: dictionary)
     }
 

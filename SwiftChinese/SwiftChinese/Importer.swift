@@ -11,9 +11,12 @@ import UIKit
 public class Importer: NSObject {
     var dictionaryString : String
     
-    public init(forDictionaryAtUrl: URL) {
+    public override init() {
         do {
-            self.dictionaryString = try String(contentsOf: forDictionaryAtUrl, encoding: String.Encoding.utf8)
+            // Hard coded path for now. To be replaced with automatic download and unzipping.
+            // TODO: automatic download and unzipping of dictionary export
+            let dictionaryUrl = URL(fileURLWithPath: "/Users/niklas/Downloads/cedict_ts.u8-3")
+            self.dictionaryString = try String(contentsOf: dictionaryUrl, encoding: String.Encoding.utf8)
         } catch let error as NSError {
             debugPrint(error)
             self.dictionaryString = ""
