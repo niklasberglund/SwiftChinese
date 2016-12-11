@@ -19,8 +19,7 @@ class ViewController: UIViewController {
         print(dataController)
         dictionary.storeTestEntry()
         
-        let importer = Importer()
-        importer.insertAllEntries(dictionary: dictionary)
+        
     }
 
     override func didReceiveMemoryWarning() {

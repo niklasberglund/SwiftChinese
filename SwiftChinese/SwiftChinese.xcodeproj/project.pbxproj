@@ -20,7 +20,6 @@
 		852633A31DF7290500621DBA /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */; };
 		852633A61DF8112A00621DBA /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A51DF8112A00621DBA /* Translation.swift */; };
 		852633A81DF8171E00621DBA /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A71DF8171E00621DBA /* Importer.swift */; };
-		852633A91DF8197C00621DBA /* Importer.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633A71DF8171E00621DBA /* Importer.swift */; };
 		852633AA1DF8198400621DBA /* Translation.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633A51DF8112A00621DBA /* Translation.swift */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
@@ -117,6 +116,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8525747D1DFD42A30034993D /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				852633A71DF8171E00621DBA /* Importer.swift */,
+			);
+			name = Internal;
+			sourceTree = "<group>";
+		};
 		8526338F1DF6BB6300621DBA /* NSManagedObject subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,9 +175,9 @@
 			isa = PBXGroup;
 			children = (
 				85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */,
-				852633A71DF8171E00621DBA /* Importer.swift */,
 				852633751DF5D64000621DBA /* Dictionary.swift */,
 				852633A51DF8112A00621DBA /* Translation.swift */,
+				8525747D1DFD42A30034993D /* Internal */,
 				85F7F19E1DF131FA00F4FBFB /* Info.plist */,
 				85F7F1B71DF1344600F4FBFB /* Core Data */,
 				852574681DFA91260034993D /* String+md5.swift */,
@@ -224,7 +231,6 @@
 			files = (
 				85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */,
 				852633AA1DF8198400621DBA /* Translation.swift in Headers */,
-				852633A91DF8197C00621DBA /* Importer.swift in Headers */,
 				852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
