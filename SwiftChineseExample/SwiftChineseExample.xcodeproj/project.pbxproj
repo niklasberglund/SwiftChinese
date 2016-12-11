@@ -53,6 +53,13 @@
 			remoteGlobalIDString = 85D299F71DFA8993003895F4;
 			remoteInfo = CommonCrypto;
 		};
+		852574811DFD642A0034993D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8525746A1DFD3D910034993D /* Pods.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 989C5494EF933FB19626FAAB0C616929;
+			remoteInfo = "Pods-SwiftChinese";
+		};
 		852633721DF13A4A00621DBA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 85F7F1E91DF1395100F4FBFB /* SwiftChinese.xcodeproj */;
@@ -209,6 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				852574821DFD642A0034993D /* PBXTargetDependency */,
 				852633731DF13A4A00621DBA /* PBXTargetDependency */,
 			);
 			name = SwiftChineseExample;
@@ -379,6 +387,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		852574821DFD642A0034993D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SwiftChinese";
+			targetProxy = 852574811DFD642A0034993D /* PBXContainerItemProxy */;
+		};
 		852633731DF13A4A00621DBA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftChinese;
@@ -508,8 +521,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = N95Z7TWCA8;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Pods/**",
+					"$(PROJECT_DIR)/Pods/build/Release$(EFFECTIVE_PLATFORM_NAME)/**",
+				);
 				INFOPLIST_FILE = SwiftChineseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_ROOT)/../Pods/**";
+				PODS_ROOT = "$(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.SwiftChineseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -522,8 +541,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = N95Z7TWCA8;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Pods/**",
+					"$(PROJECT_DIR)/Pods/build/Release$(EFFECTIVE_PLATFORM_NAME)/**",
+				);
 				INFOPLIST_FILE = SwiftChineseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = "$(BUILD_ROOT)/../Pods/**";
+				PODS_ROOT = "$(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.SwiftChineseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
