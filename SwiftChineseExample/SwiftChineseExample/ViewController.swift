@@ -17,9 +17,10 @@ class ViewController: UIViewController {
         let dictionary = SwiftChinese.Dictionary()
         
         print(dataController)
-        dictionary.storeTestEntry()
+        //dictionary.storeTestEntry()
         
-        
+        let dictionaryExport = DictionaryExport.latestDictionaryExport()
+        debugPrint(dictionaryExport)
     }
 
     override func didReceiveMemoryWarning() {

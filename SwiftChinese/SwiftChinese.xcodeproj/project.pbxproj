@@ -10,6 +10,8 @@
 		1958837BD0AB946A69892DEC /* Pods_SwiftChineseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E6D13EBF1EAFD920229AEBC /* Pods_SwiftChineseTests.framework */; };
 		22728697EDEC81029AE1BABD /* Pods_CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2469D3B59BB3A4612CB530 /* Pods_CommonCrypto.framework */; };
 		852574691DFA91260034993D /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852574681DFA91260034993D /* String+md5.swift */; };
+		8525747F1DFD43E90034993D /* DictionaryExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8525747E1DFD43E90034993D /* DictionaryExport.swift */; };
+		852574801DFD4CFE0034993D /* DictionaryExport.swift in Headers */ = {isa = PBXBuildFile; fileRef = 8525747E1DFD43E90034993D /* DictionaryExport.swift */; };
 		852633761DF5D64000621DBA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
 		852633891DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633831DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift */; };
 		8526338A1DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633841DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift */; };
@@ -46,6 +48,7 @@
 		3E6D13EBF1EAFD920229AEBC /* Pods_SwiftChineseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftChineseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		60C0D870F4225314E1B3A9D5 /* Pods-SwiftChinese.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftChinese.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftChinese/Pods-SwiftChinese.debug.xcconfig"; sourceTree = "<group>"; };
 		852574681DFA91260034993D /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
+		8525747E1DFD43E90034993D /* DictionaryExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExport.swift; sourceTree = "<group>"; };
 		852633751DF5D64000621DBA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		852633831DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ChineseEntry+CoreDataClass.swift"; path = "../ChineseEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
 		852633841DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ChineseEntry+CoreDataProperties.swift"; path = "../ChineseEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 				85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */,
 				852633751DF5D64000621DBA /* Dictionary.swift */,
 				852633A51DF8112A00621DBA /* Translation.swift */,
+				8525747E1DFD43E90034993D /* DictionaryExport.swift */,
 				8525747D1DFD42A30034993D /* Internal */,
 				85F7F19E1DF131FA00F4FBFB /* Info.plist */,
 				85F7F1B71DF1344600F4FBFB /* Core Data */,
@@ -230,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */,
+				852574801DFD4CFE0034993D /* DictionaryExport.swift in Headers */,
 				852633AA1DF8198400621DBA /* Translation.swift in Headers */,
 				852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */,
 			);
@@ -495,6 +500,7 @@
 				8526338D1DF6BB5B00621DBA /* Entry+CoreDataClass.swift in Sources */,
 				8526338C1DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift in Sources */,
 				852633A31DF7290500621DBA /* Entry+CoreDataProperties.swift in Sources */,
+				8525747F1DFD43E90034993D /* DictionaryExport.swift in Sources */,
 				852633A81DF8171E00621DBA /* Importer.swift in Sources */,
 				8526338B1DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift in Sources */,
 				8526338A1DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift in Sources */,
