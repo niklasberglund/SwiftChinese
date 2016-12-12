@@ -7,16 +7,50 @@
 //
 
 import Foundation
+import SSZipArchive
 
 public class DictionaryExport : NSObject {
     var releaseDate : Date
     var numberOfEntries : Int
     var zipArchiveUrl : URL
+    var content : String?
+    
+    public enum ExportError : Error {
+        case DownloadFailed
+        case UnzipFailed
+    }
+    
+    public typealias DownloadCompleteClosure = (_ databaseDump : String?, _ error : ExportError?) -> Void
+    
     
     init(releaseDate: Date, numberOfEntries: Int, zipArchive: URL) {
         self.releaseDate = releaseDate
         self.numberOfEntries = numberOfEntries
         self.zipArchiveUrl = zipArchive
+    }
+    
+    public func download(onCompletion: @escaping DownloadCompleteClosure) -> Void {
+        let request = URLRequest(url: self.zipArchiveUrl)
+        
+        URLSession.shared.downloadTask(with: request, completionHandler: { (dataUrl, response, error) -> Void in
+            guard error != nil else {
+                onCompletion(nil, ExportError.DownloadFailed)
+                return
+            }
+            
+            do {
+                let unzipDirPath = NSTemporaryDirectory()
+                let unzippedFilePath = unzipDirPath + "cedict_ts.u8"
+                SSZipArchive.unzipFile(atPath: dataUrl!.path, toDestination: unzipDirPath)
+                
+                
+                self.content = try String(contentsOfFile: unzippedFilePath, encoding: String.Encoding.utf8)
+                onCompletion(self.content, nil)
+            }
+            catch {
+                onCompletion(nil, ExportError.UnzipFailed)
+            }
+        }).resume()
     }
     
     public class func latestDictionaryExport() -> DictionaryExport? {

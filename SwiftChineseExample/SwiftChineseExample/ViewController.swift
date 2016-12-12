@@ -14,13 +14,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let dataController = DataController()
-        let dictionary = SwiftChinese.Dictionary()
+        //let dictionary = SwiftChinese.Dictionary()
         
         print(dataController)
         //dictionary.storeTestEntry()
         
         let dictionaryExport = DictionaryExport.latestDictionaryExport()
-        debugPrint(dictionaryExport)
+        
+        dictionaryExport?.download(onCompletion: { (exportContent, error) in
+            debugPrint(exportContent)
+            debugPrint(error)
+        })
     }
 
     override func didReceiveMemoryWarning() {
