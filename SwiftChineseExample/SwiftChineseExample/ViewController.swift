@@ -23,8 +23,8 @@ class ViewController: UIViewController {
             let dictionaryExport = try DictionaryExport.latestDictionaryExport()
             
             dictionaryExport?.download(onCompletion: { (exportContent, error) in
-                debugPrint(exportContent)
-                debugPrint(error)
+                debugPrint(exportContent!)
+                debugPrint(error!)
                 
                 debugPrint(dictionaryExport?.hasDownloaded)
             })
