@@ -51,7 +51,7 @@ public class DictionaryExport : NSObject {
                 
                 
                 self.content = try String(contentsOfFile: unzippedFilePath, encoding: String.Encoding.utf8)
-                onCompletion(self.content, nil)
+                onCompletion(self.content, nil) // Success
             }
             catch {
                 onCompletion(nil, ExportError.UnzipFailed)
