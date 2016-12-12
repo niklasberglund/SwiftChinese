@@ -15,6 +15,12 @@ public class DictionaryExport : NSObject {
     var zipArchiveUrl : URL
     var content : String?
     
+    public var hasDownloaded : Bool {
+        get {
+            return content != nil
+        }
+    }
+    
     public enum ExportError : Error {
         case DownloadFailed
         case UnzipFailed

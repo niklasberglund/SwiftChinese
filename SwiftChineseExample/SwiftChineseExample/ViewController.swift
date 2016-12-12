@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         dictionaryExport?.download(onCompletion: { (exportContent, error) in
             debugPrint(exportContent)
             debugPrint(error)
+            
+            debugPrint(dictionaryExport?.hasDownloaded)
         })
     }
 
