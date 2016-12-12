@@ -36,6 +36,23 @@ public class DictionaryExport : NSObject {
         self.zipArchiveUrl = zipArchive
     }
     
+    
+    /// Intended for debugging/development only. When developing you can use this initializer instead to initiate from a local CC-CEDICT export file (cedict_ts.u8). This way you don't have to download and unzip it.
+    ///
+    /// - Parameter localFile: File URL where the unzipped CC-CEDICT export is located(cedict_ts.u8)
+    init(localFile: URL) {
+        self.releaseDate = Date()
+        self.numberOfEntries = 123123
+        self.zipArchiveUrl = URL(string: "http://dummy-domain.com/dummy-file.zip")!
+        
+        do {
+            self.content = try String(contentsOf: localFile)
+        }
+        catch {
+            self.content = nil
+        }
+    }
+    
     public func download(onCompletion: @escaping DownloadCompleteClosure) -> Void {
         let request = URLRequest(url: self.zipArchiveUrl)
         
