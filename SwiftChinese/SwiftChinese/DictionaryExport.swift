@@ -53,6 +53,10 @@ public class DictionaryExport : NSObject {
         }
     }
     
+    
+    /// Triggers download of this dictionary export. The database export is returned in the `onCompletion` closure and also stored in `self.content`
+    ///
+    /// - Parameter onCompletion: Closure invoked after download is done, or when it has failed.
     public func download(onCompletion: @escaping DownloadCompleteClosure) -> Void {
         let request = URLRequest(url: self.zipArchiveUrl)
         
