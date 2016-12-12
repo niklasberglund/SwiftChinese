@@ -527,7 +527,7 @@
 				);
 				INFOPLIST_FILE = SwiftChineseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(BUILD_ROOT)/../Pods/**";
+				LIBRARY_SEARCH_PATHS = "";
 				PODS_ROOT = "$(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.SwiftChineseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -547,7 +547,7 @@
 				);
 				INFOPLIST_FILE = SwiftChineseExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "$(BUILD_ROOT)/../Pods/**";
+				LIBRARY_SEARCH_PATHS = "";
 				PODS_ROOT = "$(PROJECT_DIR)/Pods";
 				PRODUCT_BUNDLE_IDENTIFIER = com.klurig.SwiftChineseExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
