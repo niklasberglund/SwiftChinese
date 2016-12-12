@@ -22,6 +22,7 @@ public class DictionaryExport : NSObject {
     }
     
     public enum ExportError : Error {
+        case DownloadInfoFailed
         case DownloadFailed
         case UnzipFailed
     }
@@ -59,7 +60,7 @@ public class DictionaryExport : NSObject {
         }).resume()
     }
     
-    public class func latestDictionaryExport() -> DictionaryExport? {
+    public class func latestDictionaryExport() throws -> DictionaryExport? {
         do {
             let downloadPageHtml = try String(contentsOf:URL(string: "https://www.mdbg.net/chindict/chindict.php?page=cedict")!)
             debugPrint(downloadPageHtml)
@@ -95,9 +96,8 @@ public class DictionaryExport : NSObject {
             
             return DictionaryExport(releaseDate: latestReleaseDate!, numberOfEntries: Int(numberOfEntriesResult!.intValue), zipArchive: zipArchiveUrl!)
         }
-        catch let error {
-            debugPrint(error)
-            return nil
+        catch {
+            throw ExportError.DownloadInfoFailed
         }
     }
 }

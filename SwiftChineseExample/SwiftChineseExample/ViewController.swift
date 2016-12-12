@@ -19,14 +19,19 @@ class ViewController: UIViewController {
         print(dataController)
         //dictionary.storeTestEntry()
         
-        let dictionaryExport = DictionaryExport.latestDictionaryExport()
-        
-        dictionaryExport?.download(onCompletion: { (exportContent, error) in
-            debugPrint(exportContent)
-            debugPrint(error)
+        do {
+            let dictionaryExport = try DictionaryExport.latestDictionaryExport()
             
-            debugPrint(dictionaryExport?.hasDownloaded)
-        })
+            dictionaryExport?.download(onCompletion: { (exportContent, error) in
+                debugPrint(exportContent)
+                debugPrint(error)
+                
+                debugPrint(dictionaryExport?.hasDownloaded)
+            })
+        }
+        catch let error {
+            debugPrint(error)
+        }
     }
 
     override func didReceiveMemoryWarning() {
