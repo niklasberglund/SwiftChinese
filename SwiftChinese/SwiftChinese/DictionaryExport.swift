@@ -39,7 +39,7 @@ public class DictionaryExport : NSObject {
         let request = URLRequest(url: self.zipArchiveUrl)
         
         URLSession.shared.downloadTask(with: request, completionHandler: { (dataUrl, response, error) -> Void in
-            guard error != nil else {
+            guard error == nil else {
                 onCompletion(nil, ExportError.DownloadFailed)
                 return
             }
