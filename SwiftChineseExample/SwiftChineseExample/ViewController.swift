@@ -26,7 +26,7 @@ class ViewController: UIViewController {
                 debugPrint(exportContent!)
                 debugPrint(error!)
                 
-                debugPrint(dictionaryExport?.hasDownloaded)
+                debugPrint(dictionaryExport!.hasDownloaded)
             })
         }
         catch let error {
