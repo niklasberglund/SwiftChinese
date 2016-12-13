@@ -14,6 +14,10 @@ public class DictionaryExport : NSObject {
     var exportInfo : DictionaryExportInfo
     var content : String?
     
+    var numberOfEntries : Int?
+    var exportDate : Date?
+    
+    
     public var hasDownloaded : Bool {
         get {
             return content != nil
@@ -68,11 +72,36 @@ public class DictionaryExport : NSObject {
                 
                 
                 self.content = try String(contentsOfFile: unzippedFilePath, encoding: String.Encoding.utf8)
+                
+                self.extractMetadata()
+                
                 onCompletion(self.content, nil) // Success
             }
             catch {
                 onCompletion(nil, ExportError.UnzipFailed)
             }
         }).resume()
+    }
+    
+    func extractMetadata() -> Void {
+        let scanner = Scanner(string: self.content!)
+        
+        var numberOfEntriesResult : NSString?
+        let numberOfEntriesStart = "#! entries="
+        scanner.scanUpTo(numberOfEntriesStart, into: nil)
+        scanner.scanLocation = scanner.scanLocation + numberOfEntriesStart.characters.count
+        scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &numberOfEntriesResult)
+        
+        var exportDateResult : NSString?
+        let exportDateStart = "#! date="
+        scanner.scanUpTo(exportDateStart, into: nil)
+        scanner.scanLocation = scanner.scanLocation + exportDateStart.characters.count
+        scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &exportDateResult)
+        
+        self.numberOfEntries = Int(numberOfEntriesResult!.intValue)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        self.exportDate = dateFormatter.date(from: exportDateResult as! String)
     }
 }
