@@ -24,10 +24,18 @@ class ViewController: UIViewController {
             let dictionaryExport = DictionaryExport(exportInfo: dictionaryExportInfo!)
             
             dictionaryExport.download(onCompletion: { (exportContent, error) in
-                debugPrint(exportContent!)
-                debugPrint(error!)
+                //debugPrint(exportContent!)
+                //debugPrint(error!)
                 
                 debugPrint(dictionaryExport.hasDownloaded)
+                
+                let dictionary = Dictionary()
+                
+                let someEntryByHash = dictionary.fetchEntryObject(withLineHash: "17d3fd8bf8178dd5dae1680ce7b243b9")
+                debugPrint(someEntryByHash!)
+                
+                let someEntryBySimplifiedChinese = dictionary.fetchEntryObject(forSimplifiedChinese: "猫")
+                debugPrint(someEntryBySimplifiedChinese!)
             })
         }
         catch let error {

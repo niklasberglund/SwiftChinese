@@ -48,6 +48,7 @@ public class Importer: NSObject {
         return translationObjects
     }
     
+    
     // MARK: - Core data store methods
     func insert(translation: Translation) -> Void {
         let context = dataController.getContext()
