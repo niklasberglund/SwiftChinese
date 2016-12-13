@@ -20,14 +20,6 @@ public class Dictionary: NSObject {
     
     var dataController = DataController()
     
-    /**
-    * Update with the latest CC-CEDICT data
-    */
-    func update(onCompletion:CompletionClosure, onProgress:ProgressClosure) -> Void {
-        let importer = Importer()
-        importer.insertAllEntries(dictionary: self)
-    }
-    
     public func insert(translation: Translation) -> Void {
         let context = dataController.getContext()
         

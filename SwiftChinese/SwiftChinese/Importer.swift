@@ -9,24 +9,14 @@
 import UIKit
 
 public class Importer: NSObject {
-    var dictionaryString : String
+    var dictionaryExport : DictionaryExport
     
-    public override init() {
-        do {
-            // Hard coded path for now. To be replaced with automatic download and unzipping.
-            // TODO: automatic download and unzipping of dictionary export
-            let dictionaryUrl = URL(fileURLWithPath: "/Users/niklas/Downloads/cedict_ts.u8-3")
-            self.dictionaryString = try String(contentsOf: dictionaryUrl, encoding: String.Encoding.utf8)
-        } catch let error as NSError {
-            debugPrint(error)
-            self.dictionaryString = ""
-        }
+    public init(dictionaryExport: DictionaryExport) {
+        self.dictionaryExport = dictionaryExport
     }
     
     public func insertAllEntries(dictionary: Dictionary) -> Void {
-        //debugPrint(translationObjects(fromDictionaryString: self.dictionaryString))
-        
-        let translationArray = translationObjects(fromDictionaryString: self.dictionaryString)
+        let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
         
         for translation in translationArray {
             dictionary.insert(translation: translation)

@@ -121,14 +121,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		8525747D1DFD42A30034993D /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				852633A71DF8171E00621DBA /* Importer.swift */,
-			);
-			name = Internal;
-			sourceTree = "<group>";
-		};
 		8526338F1DF6BB6300621DBA /* NSManagedObject subclasses */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,10 +173,10 @@
 			children = (
 				85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */,
 				852633751DF5D64000621DBA /* Dictionary.swift */,
+				852633A71DF8171E00621DBA /* Importer.swift */,
 				852633A51DF8112A00621DBA /* Translation.swift */,
 				852574831DFFB83B0034993D /* DictionaryExportInfo.swift */,
 				8525747E1DFD43E90034993D /* DictionaryExport.swift */,
-				8525747D1DFD42A30034993D /* Internal */,
 				85F7F19E1DF131FA00F4FBFB /* Info.plist */,
 				85F7F1B71DF1344600F4FBFB /* Core Data */,
 				852574681DFA91260034993D /* String+md5.swift */,
