@@ -49,7 +49,7 @@ public class Importer: NSObject {
     }
     
     // MARK: - Core data store methods
-    public func insert(translation: Translation) -> Void {
+    func insert(translation: Translation) -> Void {
         let context = dataController.getContext()
         
         let entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as! Entry
