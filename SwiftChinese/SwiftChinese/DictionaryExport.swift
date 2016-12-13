@@ -9,6 +9,7 @@
 import Foundation
 import SSZipArchive
 
+/// Holds a dictionary export's data - the raw dump and also meta info parsed from the dump.
 public class DictionaryExport : NSObject {
     var exportInfo : DictionaryExportInfo
     var content : String?

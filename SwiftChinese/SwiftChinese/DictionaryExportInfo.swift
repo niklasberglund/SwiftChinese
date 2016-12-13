@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Information about a dictionary export. That is the info about the export extracted from the CC-CEDICT download page.
 public class DictionaryExportInfo : NSObject {
     var releaseDate : Date
     var numberOfEntries : Int
