@@ -36,7 +36,7 @@ public class DictionaryExport : NSObject {
     public init(exportInfo : DictionaryExportInfo) {
         self.exportInfo = exportInfo
     }
-    
+
     
     /// Intended for debugging/development only. When developing you can use this initializer instead to initiate from a local CC-CEDICT export file (cedict_ts.u8). This way you don't have to download and unzip it.
     ///
@@ -73,7 +73,7 @@ public class DictionaryExport : NSObject {
                 
                 self.content = try String(contentsOfFile: unzippedFilePath, encoding: String.Encoding.utf8)
                 
-                self.extractMetadata()
+                self.readMetadata()
                 
                 onCompletion(self.content, nil) // Success
             }
@@ -83,7 +83,9 @@ public class DictionaryExport : NSObject {
         }).resume()
     }
     
-    func extractMetadata() -> Void {
+    
+    /// Read the meta data from this export file
+    func readMetadata() -> Void {
         let scanner = Scanner(string: self.content!)
         
         var numberOfEntriesResult : NSString?
