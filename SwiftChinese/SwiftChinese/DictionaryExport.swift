@@ -10,9 +10,7 @@ import Foundation
 import SSZipArchive
 
 public class DictionaryExport : NSObject {
-    var releaseDate : Date
-    var numberOfEntries : Int
-    var zipArchiveUrl : URL
+    var exportInfo : DictionaryExportInfo
     var content : String?
     
     public var hasDownloaded : Bool {
@@ -30,10 +28,8 @@ public class DictionaryExport : NSObject {
     public typealias DownloadCompleteClosure = (_ databaseDump : String?, _ error : ExportError?) -> Void
     
     
-    init(releaseDate: Date, numberOfEntries: Int, zipArchive: URL) {
-        self.releaseDate = releaseDate
-        self.numberOfEntries = numberOfEntries
-        self.zipArchiveUrl = zipArchive
+    public init(exportInfo : DictionaryExportInfo) {
+        self.exportInfo = exportInfo
     }
     
     
@@ -41,9 +37,7 @@ public class DictionaryExport : NSObject {
     ///
     /// - Parameter localFile: File URL where the unzipped CC-CEDICT export is located(cedict_ts.u8)
     init(localFile: URL) {
-        self.releaseDate = Date()
-        self.numberOfEntries = 123123
-        self.zipArchiveUrl = URL(string: "http://dummy-domain.com/dummy-file.zip")!
+        self.exportInfo = DictionaryExportInfo(releaseDate: Date(), numberOfEntries: 123123, zipArchive: URL(string: "http://dummy-domain.com/dummy.zip")!)
         
         do {
             self.content = try String(contentsOf: localFile)
@@ -58,7 +52,7 @@ public class DictionaryExport : NSObject {
     ///
     /// - Parameter onCompletion: Closure invoked after download is done, or when it has failed.
     public func download(onCompletion: @escaping DownloadCompleteClosure) -> Void {
-        let request = URLRequest(url: self.zipArchiveUrl)
+        let request = URLRequest(url: self.exportInfo.zipArchiveUrl)
         
         URLSession.shared.downloadTask(with: request, completionHandler: { (dataUrl, response, error) -> Void in
             guard error == nil else {
@@ -79,46 +73,5 @@ public class DictionaryExport : NSObject {
                 onCompletion(nil, ExportError.UnzipFailed)
             }
         }).resume()
-    }
-    
-    public class func latestDictionaryExport() throws -> DictionaryExport? {
-        do {
-            let downloadPageHtml = try String(contentsOf:URL(string: "https://www.mdbg.net/chindict/chindict.php?page=cedict")!)
-            debugPrint(downloadPageHtml)
-            
-            let scanner = Scanner(string: downloadPageHtml)
-            
-            var latestReleaseResult : NSString?
-            let latestReleaseStart = "Latest release: <strong>"
-            scanner.scanUpTo(latestReleaseStart, into: nil)
-            scanner.scanLocation = scanner.scanLocation + latestReleaseStart.characters.count
-            scanner.scanUpTo("</strong>", into: &latestReleaseResult)
-            
-            var numberOfEntriesResult : NSString?
-            var numberOfEntriesStart = "Number of entries: <strong>"
-            scanner.scanUpTo(numberOfEntriesStart, into: nil)
-            scanner.scanLocation = scanner.scanLocation + numberOfEntriesStart.characters.count
-            scanner.scanUpTo("</strong>", into: &numberOfEntriesResult)
-            
-            var zipArchiveResult : NSString?
-            let zipArchiveStart = "<strong><a href=\""
-            scanner.scanUpTo(zipArchiveStart, into: nil)
-            scanner.scanLocation = scanner.scanLocation + zipArchiveStart.characters.count
-            scanner.scanUpTo("\"", into: &zipArchiveResult)
-            
-            // Set up latest release Date object
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss zzz"
-            let latestReleaseDate = dateFormatter.date(from: latestReleaseResult as! String)
-            
-            // Set up zip archive URL object
-            let zipArchiveString = "https://www.mdbg.net/chindict/" + (zipArchiveResult! as String)
-            let zipArchiveUrl = URL(string: zipArchiveString)
-            
-            return DictionaryExport(releaseDate: latestReleaseDate!, numberOfEntries: Int(numberOfEntriesResult!.intValue), zipArchive: zipArchiveUrl!)
-        }
-        catch {
-            throw ExportError.DownloadInfoFailed
-        }
     }
 }

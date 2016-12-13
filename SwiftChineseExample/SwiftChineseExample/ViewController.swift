@@ -20,13 +20,14 @@ class ViewController: UIViewController {
         //dictionary.storeTestEntry()
         
         do {
-            let dictionaryExport = try DictionaryExport.latestDictionaryExport()
+            let dictionaryExportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
+            let dictionaryExport = DictionaryExport(exportInfo: dictionaryExportInfo!)
             
-            dictionaryExport?.download(onCompletion: { (exportContent, error) in
+            dictionaryExport.download(onCompletion: { (exportContent, error) in
                 debugPrint(exportContent!)
                 debugPrint(error!)
                 
-                debugPrint(dictionaryExport!.hasDownloaded)
+                debugPrint(dictionaryExport.hasDownloaded)
             })
         }
         catch let error {
