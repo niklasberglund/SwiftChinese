@@ -31,16 +31,6 @@ public class Translation : NSObject {
         populate(fromLine: populateFromLine)
     }
     
-    init(entry : Entry) {
-        self.entry = entry
-        
-        self.pinyin = ""
-        self.simplifiedChinese = ""
-        self.traditionalChinese = ""
-        self.englishDefinitions = []
-        self.lineHash = ""
-    }
-    
     func populate(fromLine: String) -> Void {
         //debugPrint("fromLine: " + fromLine)
         
