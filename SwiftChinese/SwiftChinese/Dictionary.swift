@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 public class Dictionary: NSObject {
+    static let sharedInstance = Dictionary()
+    
     var dataController = DataController()
     
     // MARK: - Core Data fetch methods
