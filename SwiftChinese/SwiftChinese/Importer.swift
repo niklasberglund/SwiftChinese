@@ -18,11 +18,29 @@ public class Importer: NSObject {
         self.dictionaryExport = dictionaryExport
     }
     
-    public func insertOrUpdate(fromDictionaryExport: DictionaryExport) -> Void {
+    public func importTranslations() -> Void {
         let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
         
         for translationObject in translationArray {
-            self.insert(translation: translationObject)
+            // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
+            var entry = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash)
+            
+            if entry == nil {
+                entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translationObject.simplifiedChinese)
+                
+                if entry == nil {
+                    // The entry doesn't exist. Insert it
+                    self.insertTranslation(translationObject)
+                }
+                else {
+                    // The entry exists but some attribute has changed. Update!
+                    
+                }
+            }
+            
+            if entry != nil {
+                //self.insert(translation: translationObject)
+            }
         }
     }
     
