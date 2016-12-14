@@ -87,4 +87,28 @@ public class Importer: NSObject {
             print("?")
         }
     }
+    
+    
+    /// Update translation(Entry, ChineseEntry, EnglishEntry)
+    ///
+    /// - Parameter translation: Translation object with the attribute data to update to
+    func update(translation: Translation) -> Void {
+        // First delete the outdated translation, then insert the updated one.
+        self.delete(translation: translation) // The Translation object is only used for identifying which translation to remove. (translation.simplifiedChinese)
+        self.insert(translation: translation)
+    }
+    
+    
+    /// Delete entry
+    ///
+    /// - Parameter translation: translation to delete(used for identifying the Entry)
+    func delete(translation: Translation) -> Void {
+        let entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translation.simplifiedChinese)
+        
+        guard entry != nil else {
+            return
+        }
+        
+        self.dataController.getContext().delete(entry!)
+    }
 }
