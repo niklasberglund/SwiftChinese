@@ -49,8 +49,12 @@ public class Importer: NSObject {
     }
     
     
-    // MARK: - Core data store methods
-    func insert(translation: Translation) -> Void {
+    // MARK: - Core data insert/update/delete methods
+    
+    /// Create and insert entry
+    ///
+    /// - Parameter translation:
+    func insertTranslation(_ translation: Translation) -> Void {
         let context = dataController.getContext()
         
         let entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as! Entry
@@ -92,17 +96,17 @@ public class Importer: NSObject {
     /// Update translation(Entry, ChineseEntry, EnglishEntry)
     ///
     /// - Parameter translation: Translation object with the attribute data to update to
-    func update(translation: Translation) -> Void {
+    func updateTranslation(_ translation: Translation) -> Void {
         // First delete the outdated translation, then insert the updated one.
-        self.delete(translation: translation) // The Translation object is only used for identifying which translation to remove. (translation.simplifiedChinese)
-        self.insert(translation: translation)
+        self.deleteTranslation(translation) // The Translation object is only used for identifying which translation to remove. (translation.simplifiedChinese)
+        self.insertTranslation(translation)
     }
     
     
     /// Delete entry
     ///
     /// - Parameter translation: translation to delete(used for identifying the Entry)
-    func delete(translation: Translation) -> Void {
+    func deleteTranslation(_ translation: Translation) -> Void {
         let entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translation.simplifiedChinese)
         
         guard entry != nil else {
