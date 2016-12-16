@@ -16,4 +16,6 @@ FOUNDATION_EXPORT const unsigned char SwiftChineseVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SwiftChinese/PublicHeader.h>
 
-
+// User default keys
+#define kDictionaryVersion "CC-CEDICT-version"
+#define kDictionaryReleaseDate "CC-CEDICT-release-date"

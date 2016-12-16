@@ -42,6 +42,10 @@ public class Importer: NSObject {
                 //self.insert(translation: translationObject)
             }
         }
+        
+        // After successful import
+        UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
+        UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
     }
     
     func translationObjects(fromDictionaryString: String) -> Array<Translation> {

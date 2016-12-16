@@ -61,4 +61,13 @@ public class Dictionary: NSObject {
             return nil
         }
     }
+    
+    // MARK: - Get dictionary info (from user defaults)
+    public func version() -> String? {
+        return UserDefaults.standard.object(forKey: kDictionaryVersion) as! String?
+    }
+    
+    public func releaseDate() -> Date? {
+        return UserDefaults.standard.object(forKey: kDictionaryReleaseDate) as! Date?
+    }
 }

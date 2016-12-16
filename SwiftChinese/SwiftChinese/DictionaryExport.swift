@@ -14,6 +14,7 @@ public class DictionaryExport : NSObject {
     var exportInfo : DictionaryExportInfo
     var content : String?
     
+    var version : String?
     var numberOfEntries : Int?
     var exportDate : Date?
     
@@ -88,6 +89,18 @@ public class DictionaryExport : NSObject {
     func readMetadata() -> Void {
         let scanner = Scanner(string: self.content!)
         
+        var versionResult : NSString?
+        let versionStart = "#! version="
+        scanner.scanUpTo(versionStart, into: nil)
+        scanner.scanLocation = scanner.scanLocation + versionStart.characters.count
+        scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &versionResult)
+        
+        var subVersionResult : NSString?
+        let subVersionStart = "#! subversion="
+        scanner.scanUpTo(subVersionStart, into: nil)
+        scanner.scanLocation = scanner.scanLocation + subVersionStart.characters.count
+        scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &subVersionResult)
+        
         var numberOfEntriesResult : NSString?
         let numberOfEntriesStart = "#! entries="
         scanner.scanUpTo(numberOfEntriesStart, into: nil)
@@ -99,6 +112,8 @@ public class DictionaryExport : NSObject {
         scanner.scanUpTo(exportDateStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + exportDateStart.characters.count
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &exportDateResult)
+        
+        self.version = (versionResult as! String) + "." + (subVersionResult as! String)
         
         self.numberOfEntries = Int(numberOfEntriesResult!.intValue)
         
