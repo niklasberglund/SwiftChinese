@@ -27,8 +27,14 @@ public class DictionaryExportInfo : NSObject {
     }
     
     public class func latestDictionaryExportInfo() throws -> DictionaryExportInfo? {
+        // Official CC-CEDICT download page
+        //let downloadPageUrl = URL(string: "https://www.mdbg.net/chindict/chindict.php?page=cedict")
+        
+        // Local mirror of download page used for development
+        let downloadPageUrl = URL(string: "http://cc-cedict.local/download.html")
+        
         do {
-            let downloadPageHtml = try String(contentsOf:URL(string: "https://www.mdbg.net/chindict/chindict.php?page=cedict")!)
+            let downloadPageHtml = try String(contentsOf:downloadPageUrl!)
             
             let instance = try createInstanceFrom(html: downloadPageHtml)
             
