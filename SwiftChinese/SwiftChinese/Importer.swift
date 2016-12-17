@@ -47,17 +47,10 @@ public class Importer: NSObject {
         
         var translationObjects = Array<Translation>()
         
-        var i = 0;
         for line in lines {
             // Ingore empty and commented out lines
             if (line.characters.first != "#" && line != "") {
                 translationObjects.append(Translation(populateFromLine: line))
-                
-                // Hard coded limit useful when developing. TODO: remove
-                i = i+1;
-                if (i > 30) {
-                    return translationObjects
-                }
             }
         }
         
