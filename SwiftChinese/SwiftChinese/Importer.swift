@@ -10,11 +10,9 @@ import UIKit
 import CoreData
 
 public class Importer: NSObject {
-    var dataController : DataController
     var dictionaryExport : DictionaryExport
     
     public init(dictionaryExport: DictionaryExport) {
-        self.dataController = DataController()
         self.dictionaryExport = dictionaryExport
     }
     
@@ -64,7 +62,7 @@ public class Importer: NSObject {
     ///
     /// - Parameter translation:
     func insertTranslation(_ translation: Translation) -> Void {
-        let context = dataController.getContext()
+        let context = DataController.sharedInstance.getContext()
         
         let entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as! Entry
         let chineseEntry = NSEntityDescription.insertNewObject(forEntityName: "ChineseEntry", into: context) as! ChineseEntry
@@ -122,6 +120,6 @@ public class Importer: NSObject {
             return
         }
         
-        self.dataController.getContext().delete(entry!)
+        DataController.sharedInstance.getContext().delete(entry!)
     }
 }

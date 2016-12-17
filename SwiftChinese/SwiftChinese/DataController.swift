@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 public class DataController: NSObject {
+    static let sharedInstance = DataController()
+    
     var managedObjectContext: NSManagedObjectContext
     
     public override init() {

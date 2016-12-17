@@ -12,8 +12,6 @@ import CoreData
 public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
-    var dataController = DataController()
-    
     // MARK: - Core Data fetch methods
     public func fetchEntryObject(withLineHash: String) -> Entry? {
         let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
@@ -21,7 +19,7 @@ public class Dictionary: NSObject {
         fetchRequest.predicate = lineHashPredicate
         
         do {
-            let results = try dataController.getContext().fetch(fetchRequest)
+            let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
             debugPrint(results.count)
             
             if results.count > 0 {
@@ -43,7 +41,7 @@ public class Dictionary: NSObject {
         chineseEntryFetchRequest.predicate = simplifiedPredicate
         
         do {
-            let results = try dataController.getContext().fetch(chineseEntryFetchRequest)
+            let results = try DataController.sharedInstance.getContext().fetch(chineseEntryFetchRequest)
             debugPrint(results.count)
             
             if results.count > 0 {
@@ -67,7 +65,7 @@ public class Dictionary: NSObject {
         let allEntriesFetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
         
         do {
-            let results = try dataController.getContext().fetch(allEntriesFetchRequest)
+            let results = try DataController.sharedInstance.getContext().fetch(allEntriesFetchRequest)
             
             return results.count
         }
