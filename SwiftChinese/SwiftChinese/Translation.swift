@@ -17,6 +17,11 @@ public class Translation : NSObject {
     
     private var entry : Entry?
     
+    override public var description: String {
+        let englishDefinitionsString = englishDefinitions.joined(separator: ", ")
+        return "(simplifiedChinese: \(simplifiedChinese), pinyin: \(pinyin), englishDefinitions: [\(englishDefinitionsString)])"
+    }
+    
     init(populateFromLine: String) {
         self.entry = nil
         
