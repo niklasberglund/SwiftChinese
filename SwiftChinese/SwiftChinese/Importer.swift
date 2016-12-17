@@ -25,8 +25,10 @@ public class Importer: NSObject {
                 // Exists and up to date
             }
             else {
-                if let entryById = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translationObject.simplifiedChinese) {
+                if Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translationObject.simplifiedChinese) != nil {
                     // The entry exists but some attribute has changed. Update!
+                    debugPrint(translationObject)
+                    self.updateTranslation(translationObject)
                 }
                 else {
                     // The entry doesn't exist. Insert it
