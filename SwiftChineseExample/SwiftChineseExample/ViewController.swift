@@ -24,8 +24,10 @@ class ViewController: UIViewController {
             let dictionaryExport = DictionaryExport(exportInfo: dictionaryExportInfo!)
             
             dictionaryExport.download(onCompletion: { (exportContent, error) in
-                //debugPrint(exportContent!)
-                //debugPrint(error!)
+                guard error == nil else {
+                    debugPrint("Unable to download dictionary info. Aborting.")
+                    return
+                }
                 
                 debugPrint(dictionaryExport.hasDownloaded)
                 
