@@ -62,6 +62,21 @@ public class Dictionary: NSObject {
         }
     }
     
+    // MARK - Get dictionary info (from Core Data)
+    public func numberOfEntries() -> Int {
+        let allEntriesFetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+        
+        do {
+            let results = try dataController.getContext().fetch(allEntriesFetchRequest)
+            
+            return results.count
+        }
+        catch {
+            debugPrint(error)
+            return 0
+        }
+    }
+    
     // MARK: - Get dictionary info (from user defaults)
     public func version() -> String? {
         return UserDefaults.standard.object(forKey: kDictionaryVersion) as! String?

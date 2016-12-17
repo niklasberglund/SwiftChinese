@@ -30,6 +30,7 @@ class ViewController: UIViewController {
                 debugPrint(dictionaryExport.hasDownloaded)
                 
                 let dictionary = Dictionary()
+                print("Number of entries in dictionary: " + String(dictionary.numberOfEntries()))
                 
                 let someEntryByHash = dictionary.fetchEntryObject(withLineHash: "17d3fd8bf8178dd5dae1680ce7b243b9")
                 debugPrint(someEntryByHash!)
