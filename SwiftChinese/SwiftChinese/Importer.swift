@@ -40,6 +40,8 @@ public class Importer: NSObject {
         // After successful import
         UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
         UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
+        
+        // TODO: remove CD entities for entries that have been removed from CC-CEDICT
     }
     
     func translationObjects(fromDictionaryString: String) -> Array<Translation> {
