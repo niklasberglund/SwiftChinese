@@ -12,12 +12,18 @@ import CoreData
 public class Importer: NSObject {
     var dictionaryExport : DictionaryExport
     
+    var newEntries : Int = 0
+    var updatedEntries : Int = 0
+    var removedEntries : Int = 0
+    
     public init(dictionaryExport: DictionaryExport) {
         self.dictionaryExport = dictionaryExport
     }
     
     public func importTranslations() -> Void {
         let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
+        
+        self.beforeImport()
         
         for translationObject in translationArray {
             // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
@@ -29,10 +35,12 @@ public class Importer: NSObject {
                     // The entry exists but some attribute has changed. Update!
                     debugPrint(translationObject)
                     self.updateTranslation(translationObject)
+                    self.updatedEntries = self.updatedEntries + 1
                 }
                 else {
                     // The entry doesn't exist. Insert it
                     self.insertTranslation(translationObject)
+                    self.newEntries = self.newEntries + 1
                 }
             }
         }
@@ -57,6 +65,12 @@ public class Importer: NSObject {
         }
         
         return translationObjects
+    }
+    
+    func beforeImport() {
+        self.newEntries = 0
+        self.updatedEntries = 0
+        self.removedEntries = 0
     }
     
     
