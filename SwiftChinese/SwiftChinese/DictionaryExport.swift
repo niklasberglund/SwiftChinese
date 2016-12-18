@@ -71,7 +71,6 @@ public class DictionaryExport : NSObject {
                 let unzippedFilePath = unzipDirPath + "cedict_ts.u8"
                 SSZipArchive.unzipFile(atPath: dataUrl!.path, toDestination: unzipDirPath)
                 
-                
                 self.content = try String(contentsOfFile: unzippedFilePath, encoding: String.Encoding.utf8)
                 
                 self.readMetadata()

@@ -20,7 +20,6 @@ public class Dictionary: NSObject {
         
         do {
             let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
-            debugPrint(results.count)
             
             if results.count > 0 {
                 return results[0]
