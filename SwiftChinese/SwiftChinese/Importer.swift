@@ -117,11 +117,23 @@ public class Importer: NSObject {
     /// - Parameter translation: translation to delete(used for identifying the Entry)
     func deleteTranslation(_ translation: Translation) -> Void {
         let entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translation.simplifiedChinese)
+        let chineseEntry = entry?.inChinese
+        let englishEntries = entry?.inEnglish
         
         guard entry != nil else {
             return
         }
         
         DataController.sharedInstance.getContext().delete(entry!)
+        
+        if chineseEntry != nil {
+            DataController.sharedInstance.getContext().delete(chineseEntry!)
+        }
+        
+        if englishEntries != nil {
+            for englishEntry in englishEntries! {
+                DataController.sharedInstance.getContext().delete(englishEntry as! EnglishEntry)
+            }
+        }
     }
 }
