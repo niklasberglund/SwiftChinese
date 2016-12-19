@@ -34,11 +34,17 @@ class ViewController: UIViewController {
                 let dictionary = Dictionary()
                 print("Number of entries in dictionary: " + String(dictionary.numberOfEntries()))
                 
-                let someEntryByHash = dictionary.fetchEntryObject(withLineHash: "17d3fd8bf8178dd5dae1680ce7b243b9")
-                debugPrint(someEntryByHash!)
+                //let someEntryByHash = dictionary.fetchEntryObject(withLineHash: "17d3fd8bf8178dd5dae1680ce7b243b9")
                 
-                let someEntryBySimplifiedChinese = dictionary.fetchEntryObject(forSimplifiedChinese: "猫")
-                debugPrint(someEntryBySimplifiedChinese!)
+                //let someEntryBySimplifiedChinese = dictionary.fetchEntryObject(forSimplifiedChinese: "猫")
+                //debugPrint(someEntryBySimplifiedChinese!)
+                
+                let importer = Importer(dictionaryExport: dictionaryExport)
+                importer.importTranslations(onProgress: { (totalEntries, progressedEntries) in
+                    debugPrint("progressedEntries: \(progressedEntries), totalEntries: \(totalEntries)")
+                }, whenFinished: { (error, newEntries, updatedEntries, removedEntries) in
+                    //
+                })
             })
         }
         catch let error {
@@ -50,7 +56,4 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-

@@ -24,14 +24,20 @@ public class Importer: NSObject {
         case Finished
     }
     
+    public typealias ImportProgressClosure = (_ totalEntries: Int, _ progressedEntries: Int) -> Void
+    public typealias ImportFinishedClosure = (_ error: Error?, _ newEntries: Int, _ updatedEntries: Int, _ removedEntries: Int) -> Void
+    
+    
     public init(dictionaryExport: DictionaryExport) {
         self.dictionaryExport = dictionaryExport
     }
     
-    public func importTranslations() -> Void {
+    public func importTranslations(onProgress: ImportProgressClosure, whenFinished: ImportFinishedClosure) -> Void {
         let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
         
         self.beforeImport()
+        
+        var processingIndex = 0
         
         for translationObject in translationArray {
             // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
@@ -51,11 +57,21 @@ public class Importer: NSObject {
                     self.newEntries = self.newEntries + 1
                 }
             }
+            
+            if processingIndex % 100 == 0 {
+                onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
+            }
+            
+            processingIndex += 1
         }
         
         // After successful import
         UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
         UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
+        
+        // Final progress update
+        onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
+        
         
         self.afterImport()
         
