@@ -33,6 +33,8 @@ public class Importer: NSObject {
     }
     
     public func importTranslations(onProgress: ImportProgressClosure, whenFinished: ImportFinishedClosure) -> Void {
+        let context = DataController.sharedInstance.getContext()
+        
         let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
         
         self.beforeImport()
@@ -62,12 +64,30 @@ public class Importer: NSObject {
                 onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
             }
             
+            // Batch save
+            if processingIndex % 1000 == 0 {
+                do {
+                    try context.save()
+                    debugPrint("Saved")
+                } catch {
+                    debugPrint(error)
+                }
+            }
+            
             processingIndex += 1
         }
         
         // After successful import
         UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
         UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
+        
+        // Final save
+        do {
+            try context.save()
+            debugPrint("Saved")
+        } catch {
+            debugPrint(error)
+        }
         
         // Final progress update
         onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
@@ -138,15 +158,6 @@ public class Importer: NSObject {
         entry.added = Date() as NSDate
         entry.lineHash = translation.lineHash
         entry.lastMofified = Date() as NSDate
-        
-        do {
-            try context.save()
-            print("Saved")
-        } catch let error as NSError {
-            print(error)
-        } catch {
-            print("?")
-        }
     }
     
     
