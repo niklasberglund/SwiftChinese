@@ -16,6 +16,14 @@ public class Importer: NSObject {
     var updatedEntries : Int = 0
     var removedEntries : Int = 0
     
+    var status : ImportStatus = ImportStatus.Idle
+    
+    enum ImportStatus {
+        case Idle
+        case Running
+        case Finished
+    }
+    
     public init(dictionaryExport: DictionaryExport) {
         self.dictionaryExport = dictionaryExport
     }
@@ -49,6 +57,8 @@ public class Importer: NSObject {
         UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
         UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
         
+        self.afterImport()
+        
         // TODO: remove CD entities for entries that have been removed from CC-CEDICT
     }
     
@@ -68,9 +78,15 @@ public class Importer: NSObject {
     }
     
     func beforeImport() {
+        self.status = ImportStatus.Running
+        
         self.newEntries = 0
         self.updatedEntries = 0
         self.removedEntries = 0
+    }
+    
+    func afterImport() {
+        self.status = ImportStatus.Finished
     }
     
     
