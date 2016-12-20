@@ -10,10 +10,12 @@ import XCTest
 @testable import SwiftChinese
 
 class SwiftChineseTests: XCTestCase {
+    var dataController: DataController = DataController()
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
+        self.dataController = DataController()
     }
     
     override func tearDown() {
@@ -21,12 +23,31 @@ class SwiftChineseTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        let controller = DataController()
-        
-        XCTAssertNotNil(controller)
+    func testGetExportInfoPerformance() {
+        self.measure {
+            do {
+                let _ = try DictionaryExportInfo.latestDictionaryExportInfo()
+            }
+            catch {
+                debugPrint(error)
+            }
+        }
     }
     
+    func testSetUpExportPerformance() {
+        var dictionaryExportInfo: DictionaryExportInfo?
+        
+        do {
+            dictionaryExportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
+        }
+        catch {
+            debugPrint(error)
+        }
+        
+        self.measure {
+            let _ = DictionaryExport(exportInfo: dictionaryExportInfo!)
+        }
+    }
     
     /*func testExample() {
         // This is an example of a functional test case.
