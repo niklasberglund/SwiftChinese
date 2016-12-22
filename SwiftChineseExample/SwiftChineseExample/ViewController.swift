@@ -13,37 +13,29 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dataController = DataController()
-        //let dictionary = SwiftChinese.Dictionary()
-        
-        print(dataController)
-        //dictionary.storeTestEntry()
         
         do {
-            let dictionaryExportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
-            let dictionaryExport = DictionaryExport(exportInfo: dictionaryExportInfo!)
+            // Latest CC-CEDICT
+            let exportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
+            let export = DictionaryExport(exportInfo: dictionaryExportInfo!)
             
-            dictionaryExport.download(onCompletion: { (exportContent, error) in
+            export.download(onCompletion: { (exportContent, error) in
                 guard error == nil else {
-                    debugPrint("Unable to download dictionary info. Aborting.")
+                    debugPrint("Unable to download dictionary export. Aborting.")
                     return
                 }
                 
-                debugPrint(dictionaryExport.hasDownloaded)
-                
+                // Dictionary object used for getting translations
                 let dictionary = Dictionary()
-                print("Number of entries in dictionary: " + String(dictionary.numberOfEntries()))
+                print("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
                 
-                //let someEntryByHash = dictionary.fetchEntryObject(withLineHash: "17d3fd8bf8178dd5dae1680ce7b243b9")
-                
-                //let someEntryBySimplifiedChinese = dictionary.fetchEntryObject(forSimplifiedChinese: "猫")
-                //debugPrint(someEntryBySimplifiedChinese!)
-                
+                // Do an import
                 let importer = Importer(dictionaryExport: dictionaryExport)
                 importer.importTranslations(onProgress: { (totalEntries, progressedEntries) in
+                    // Progress update
                     debugPrint("progressedEntries: \(progressedEntries), totalEntries: \(totalEntries)")
                 }, whenFinished: { (error, newEntries, updatedEntries, removedEntries) in
-                    //
+                    print("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
                 })
             })
         }
