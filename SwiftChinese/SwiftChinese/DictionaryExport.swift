@@ -10,31 +10,31 @@ import Foundation
 import SSZipArchive
 
 /// Holds a dictionary export's data - the raw dump and also meta info parsed from the dump.
-public class DictionaryExport : NSObject {
-    var exportInfo : DictionaryExportInfo
-    var content : String?
+public class DictionaryExport: NSObject {
+    var exportInfo: DictionaryExportInfo
+    var content: String?
     
-    var version : String?
-    var numberOfEntries : Int?
-    var exportDate : Date?
+    var version: String?
+    var numberOfEntries: Int?
+    var exportDate: Date?
     
     
-    public var hasDownloaded : Bool {
+    public var hasDownloaded: Bool {
         get {
             return content != nil
         }
     }
     
-    public enum ExportError : Error {
+    public enum ExportError: Error {
         case DownloadInfoFailed
         case DownloadFailed
         case UnzipFailed
     }
     
-    public typealias DownloadCompleteClosure = (_ databaseDump : String?, _ error : ExportError?) -> Void
+    public typealias DownloadCompleteClosure = (_ databaseDump: String?, _ error: ExportError?) -> Void
     
     
-    public init(exportInfo : DictionaryExportInfo) {
+    public init(exportInfo: DictionaryExportInfo) {
         self.exportInfo = exportInfo
     }
 
@@ -60,7 +60,7 @@ public class DictionaryExport : NSObject {
     public func download(onCompletion: @escaping DownloadCompleteClosure) -> Void {
         let request = URLRequest(url: self.exportInfo.zipArchiveUrl)
         
-        URLSession.shared.downloadTask(with: request, completionHandler: { (dataUrl, response, error) -> Void in
+        URLSession.shared.downloadTask(with: request, completionHandler: { (dataUrl, _ response, error) -> Void in
             guard error == nil else {
                 onCompletion(nil, ExportError.DownloadFailed)
                 return
@@ -88,25 +88,25 @@ public class DictionaryExport : NSObject {
     func readMetadata() -> Void {
         let scanner = Scanner(string: self.content!)
         
-        var versionResult : NSString?
+        var versionResult: NSString?
         let versionStart = "#! version="
         scanner.scanUpTo(versionStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + versionStart.characters.count
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &versionResult)
         
-        var subVersionResult : NSString?
+        var subVersionResult: NSString?
         let subVersionStart = "#! subversion="
         scanner.scanUpTo(subVersionStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + subVersionStart.characters.count
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &subVersionResult)
         
-        var numberOfEntriesResult : NSString?
+        var numberOfEntriesResult: NSString?
         let numberOfEntriesStart = "#! entries="
         scanner.scanUpTo(numberOfEntriesStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + numberOfEntriesStart.characters.count
         scanner.scanUpToCharacters(from: CharacterSet.newlines, into: &numberOfEntriesResult)
         
-        var exportDateResult : NSString?
+        var exportDateResult: NSString?
         let exportDateStart = "#! date="
         scanner.scanUpTo(exportDateStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + exportDateStart.characters.count

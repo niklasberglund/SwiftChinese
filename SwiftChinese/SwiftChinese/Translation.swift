@@ -8,14 +8,14 @@
 
 import Foundation
 
-public class Translation : NSObject {
-    var pinyin : String
-    var simplifiedChinese : String
-    var traditionalChinese : String
-    var englishDefinitions : Array<String>
-    var lineHash : String
+public class Translation: NSObject {
+    var pinyin: String
+    var simplifiedChinese: String
+    var traditionalChinese: String
+    var englishDefinitions: [String]
+    var lineHash: String
     
-    private var entry : Entry?
+    private var entry: Entry?
     
     override public var description: String {
         let englishDefinitionsString = englishDefinitions.joined(separator: ", ")
@@ -43,23 +43,23 @@ public class Translation : NSObject {
         
         let scanner = Scanner(string: fromLine)
         
-        var simplifiedChinese : NSString?
+        var simplifiedChinese: NSString?
         scanner.scanUpTo(" ", into:&simplifiedChinese)
         
-        var traditionalChinese : NSString?
+        var traditionalChinese: NSString?
         scanner.scanUpTo(" ", into: &traditionalChinese)
         
-        var pinyin : NSString?
+        var pinyin: NSString?
         scanner.scanLocation = scanner.scanLocation + 2 // Step to pinyin
         scanner.scanUpTo("]", into: &pinyin)
         
         // Step to English definitions
         scanner.scanLocation = scanner.scanLocation + 3
         
-        var englishDefintionsArray = Array<String>()
+        var englishDefintionsArray = [String]()
         
-        while (scanner.isAtEnd == false) {
-            var englishDefinition : NSString?
+        while scanner.isAtEnd == false {
+            var englishDefinition: NSString?
             scanner.scanUpTo("/", into: &englishDefinition)
             scanner.scanLocation = scanner.scanLocation + 1
             englishDefintionsArray.append(englishDefinition as! String)

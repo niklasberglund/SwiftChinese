@@ -14,7 +14,7 @@ import CoreData
 extension ChineseEntry {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<ChineseEntry> {
-        return NSFetchRequest<ChineseEntry>(entityName: "ChineseEntry");
+        return NSFetchRequest<ChineseEntry>(entityName: "ChineseEntry")
     }
 
     @NSManaged public var pinyin: String?

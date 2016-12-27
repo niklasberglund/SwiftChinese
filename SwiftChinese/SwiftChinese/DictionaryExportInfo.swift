@@ -9,12 +9,12 @@
 import Foundation
 
 /// Information about a dictionary export. That is the info about the export extracted from the CC-CEDICT download page.
-public class DictionaryExportInfo : NSObject {
-    var releaseDate : Date
-    var numberOfEntries : Int
-    var zipArchiveUrl : URL
+public class DictionaryExportInfo: NSObject {
+    var releaseDate: Date
+    var numberOfEntries: Int
+    var zipArchiveUrl: URL
     
-    public enum ExportInfoError : Error {
+    public enum ExportInfoError: Error {
         case DownloadInfoFailed
         case ParseHTMLFailed
     }
@@ -55,19 +55,19 @@ public class DictionaryExportInfo : NSObject {
     class func createInstanceFrom(html: String) throws -> DictionaryExportInfo {
         let scanner = Scanner(string: html)
         
-        var latestReleaseResult : NSString?
+        var latestReleaseResult: NSString?
         let latestReleaseStart = "Latest release: <strong>"
         scanner.scanUpTo(latestReleaseStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + latestReleaseStart.characters.count
         scanner.scanUpTo("</strong>", into: &latestReleaseResult)
         
-        var numberOfEntriesResult : NSString?
+        var numberOfEntriesResult: NSString?
         var numberOfEntriesStart = "Number of entries: <strong>"
         scanner.scanUpTo(numberOfEntriesStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + numberOfEntriesStart.characters.count
         scanner.scanUpTo("</strong>", into: &numberOfEntriesResult)
         
-        var zipArchiveResult : NSString?
+        var zipArchiveResult: NSString?
         let zipArchiveStart = "<strong><a href=\""
         scanner.scanUpTo(zipArchiveStart, into: nil)
         scanner.scanLocation = scanner.scanLocation + zipArchiveStart.characters.count
@@ -84,7 +84,7 @@ public class DictionaryExportInfo : NSObject {
         
         // Validate results
         // TODO: better validation
-        if (latestReleaseResult == nil || numberOfEntriesResult == nil || zipArchiveResult == nil) {
+        if latestReleaseResult == nil || numberOfEntriesResult == nil || zipArchiveResult == nil {
             throw ExportInfoError.ParseHTMLFailed
         }
         

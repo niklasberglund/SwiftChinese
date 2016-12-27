@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 
 public class Importer: NSObject {
-    var dictionaryExport : DictionaryExport
+    var dictionaryExport: DictionaryExport
     
-    var newEntries : Int = 0
-    var updatedEntries : Int = 0
-    var removedEntries : Int = 0
+    var newEntries: Int = 0
+    var updatedEntries: Int = 0
+    var removedEntries: Int = 0
     
-    var status : ImportStatus = ImportStatus.Idle
+    var status: ImportStatus = ImportStatus.Idle
     
     enum ImportStatus {
         case Idle
@@ -98,14 +98,14 @@ public class Importer: NSObject {
         // TODO: remove CD entities for entries that have been removed from CC-CEDICT
     }
     
-    func translationObjects(fromDictionaryString: String) -> Array<Translation> {
+    func translationObjects(fromDictionaryString: String) -> [Translation] {
         let lines = fromDictionaryString.components(separatedBy: CharacterSet.newlines)
         
-        var translationObjects = Array<Translation>()
+        var translationObjects = [Translation]()
         
         for line in lines {
             // Ingore empty and commented out lines
-            if (line.characters.first != "#" && line != "") {
+            if line.characters.first != "#" && line != "" {
                 translationObjects.append(Translation(populateFromLine: line))
             }
         }

@@ -13,7 +13,7 @@ import CoreData
 extension Entry {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Entry> {
-        return NSFetchRequest<Entry>(entityName: "Entry");
+        return NSFetchRequest<Entry>(entityName: "Entry")
     }
 
     @NSManaged public var added: NSDate?
