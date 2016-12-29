@@ -5,3 +5,8 @@ disabled_rules:
   - vertical_whitespace
   - statement_position
   - todo
+excluded:
+  - "SwiftChinese/EnglishDefinition+CoreDataClass.swift"
+  - "SwiftChinese/EnglishDefinition+CoreDataProperties.swift"
+  - "SwiftChinese/TranslationEntry+CoreDataClass.swift"
+  - "SwiftChinese/TranslationEntry+CoreDataProperties.swift"
