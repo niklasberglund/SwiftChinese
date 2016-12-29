@@ -134,30 +134,30 @@ public class Importer: NSObject {
     func insertTranslation(_ translation: Translation) -> Void {
         let context = DataController.sharedInstance.getContext()
         
-        let entry = NSEntityDescription.insertNewObject(forEntityName: "Entry", into: context) as! Entry
-        let chineseEntry = NSEntityDescription.insertNewObject(forEntityName: "ChineseEntry", into: context) as! ChineseEntry
+        let translationEntry = NSEntityDescription.insertNewObject(forEntityName: "TranslationEntry", into: context) as! TranslationEntry
         
-        chineseEntry.pinyin = translation.pinyin
-        chineseEntry.simplified = translation.simplifiedChinese
-        chineseEntry.traditional = translation.traditionalChinese
+        translationEntry.pinyin = translation.pinyin
+        translationEntry.simplified = translation.simplifiedChinese
+        translationEntry.traditional = translation.traditionalChinese
         
-        var englishEntries = Set<EnglishEntry>()
+        debugPrint("inserting: " + translationEntry.description)
+        
+        var englishEntries = Set<EnglishDefinition>()
         
         for englishDefinition in translation.englishDefinitions {
             debugPrint(englishDefinition)
             
-            let englishEntry = NSEntityDescription.insertNewObject(forEntityName: "EnglishEntry", into: context) as! EnglishEntry
+            let englishEntry = NSEntityDescription.insertNewObject(forEntityName: "EnglishDefinition", into: context) as! EnglishDefinition
             
             englishEntry.english = englishDefinition
             englishEntries.insert(englishEntry)
         }
         
-        entry.inChinese = chineseEntry
-        entry.inEnglish = englishEntries as NSSet
+        translationEntry.inEnglish = englishEntries as NSSet
         
-        entry.added = Date() as NSDate
-        entry.lineHash = translation.lineHash
-        entry.lastMofified = Date() as NSDate
+        translationEntry.added = Date() as NSDate
+        translationEntry.lineHash = translation.lineHash
+        translationEntry.lastMofified = Date() as NSDate
     }
     
     
@@ -176,8 +176,7 @@ public class Importer: NSObject {
     /// - Parameter translation: translation to delete(used for identifying the Entry)
     func deleteTranslation(_ translation: Translation) -> Void {
         let entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translation.simplifiedChinese)
-        let chineseEntry = entry?.inChinese
-        let englishEntries = entry?.inEnglish
+        let englishDefinitions = entry?.inEnglish
         
         guard entry != nil else {
             return
@@ -185,13 +184,9 @@ public class Importer: NSObject {
         
         DataController.sharedInstance.getContext().delete(entry!)
         
-        if chineseEntry != nil {
-            DataController.sharedInstance.getContext().delete(chineseEntry!)
-        }
-        
-        if englishEntries != nil {
-            for englishEntry in englishEntries! {
-                DataController.sharedInstance.getContext().delete(englishEntry as! EnglishEntry)
+        if englishDefinitions != nil {
+            for englishDefinition in englishDefinitions! {
+                DataController.sharedInstance.getContext().delete(englishDefinition as! EnglishDefinition)
             }
         }
     }

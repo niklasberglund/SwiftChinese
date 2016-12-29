@@ -15,7 +15,7 @@ public class Translation: NSObject {
     var englishDefinitions: [String]
     var lineHash: String
     
-    private var entry: Entry?
+    private var translationEntry: TranslationEntry?
     
     override public var description: String {
         let englishDefinitionsString = englishDefinitions.joined(separator: ", ")
@@ -23,7 +23,7 @@ public class Translation: NSObject {
     }
     
     init(populateFromLine: String) {
-        self.entry = nil
+        self.translationEntry = nil
         
         self.pinyin = ""
         self.simplifiedChinese = ""

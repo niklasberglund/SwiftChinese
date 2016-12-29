@@ -13,16 +13,14 @@
 		852574801DFD4CFE0034993D /* DictionaryExport.swift in Headers */ = {isa = PBXBuildFile; fileRef = 8525747E1DFD43E90034993D /* DictionaryExport.swift */; };
 		852574841DFFB83B0034993D /* DictionaryExportInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852574831DFFB83B0034993D /* DictionaryExportInfo.swift */; };
 		852633761DF5D64000621DBA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
-		852633891DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633831DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift */; };
-		8526338A1DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633841DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift */; };
-		8526338B1DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633851DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift */; };
-		8526338C1DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633861DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift */; };
-		8526338D1DF6BB5B00621DBA /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */; };
 		852633911DF6CCFE00621DBA /* Dictionary.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633751DF5D64000621DBA /* Dictionary.swift */; };
-		852633A31DF7290500621DBA /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */; };
 		852633A61DF8112A00621DBA /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A51DF8112A00621DBA /* Translation.swift */; };
 		852633A81DF8171E00621DBA /* Importer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852633A71DF8171E00621DBA /* Importer.swift */; };
 		852633AA1DF8198400621DBA /* Translation.swift in Headers */ = {isa = PBXBuildFile; fileRef = 852633A51DF8112A00621DBA /* Translation.swift */; };
+		85C46DD91E1229C60020E3BF /* TranslationEntry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46DD51E1229C60020E3BF /* TranslationEntry+CoreDataClass.swift */; };
+		85C46DDA1E1229C60020E3BF /* TranslationEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46DD61E1229C60020E3BF /* TranslationEntry+CoreDataProperties.swift */; };
+		85C46DDB1E1229C60020E3BF /* EnglishDefinition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46DD71E1229C60020E3BF /* EnglishDefinition+CoreDataClass.swift */; };
+		85C46DDC1E1229C60020E3BF /* EnglishDefinition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85C46DD81E1229C60020E3BF /* EnglishDefinition+CoreDataProperties.swift */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -51,14 +49,12 @@
 		8525747E1DFD43E90034993D /* DictionaryExport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExport.swift; sourceTree = "<group>"; };
 		852574831DFFB83B0034993D /* DictionaryExportInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExportInfo.swift; sourceTree = "<group>"; };
 		852633751DF5D64000621DBA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
-		852633831DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ChineseEntry+CoreDataClass.swift"; path = "../ChineseEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		852633841DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ChineseEntry+CoreDataProperties.swift"; path = "../ChineseEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		852633851DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EnglishEntry+CoreDataClass.swift"; path = "../EnglishEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		852633861DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "EnglishEntry+CoreDataProperties.swift"; path = "../EnglishEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Entry+CoreDataClass.swift"; path = "../Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Entry+CoreDataProperties.swift"; path = "../Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		852633A51DF8112A00621DBA /* Translation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		852633A71DF8171E00621DBA /* Importer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Importer.swift; sourceTree = "<group>"; };
+		85C46DD51E1229C60020E3BF /* TranslationEntry+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TranslationEntry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		85C46DD61E1229C60020E3BF /* TranslationEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TranslationEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		85C46DD71E1229C60020E3BF /* EnglishDefinition+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnglishDefinition+CoreDataClass.swift"; sourceTree = "<group>"; };
+		85C46DD81E1229C60020E3BF /* EnglishDefinition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnglishDefinition+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		85D299F71DFA8993003895F4 /* CommonCrypto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonCrypto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85D299FA1DFA8993003895F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CommonCrypto.xcconfig; sourceTree = "<group>"; };
@@ -122,12 +118,10 @@
 		8526338F1DF6BB6300621DBA /* NSManagedObject subclasses */ = {
 			isa = PBXGroup;
 			children = (
-				852633831DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift */,
-				852633841DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift */,
-				852633851DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift */,
-				852633861DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift */,
-				852633871DF6BB5B00621DBA /* Entry+CoreDataClass.swift */,
-				852633A21DF7290500621DBA /* Entry+CoreDataProperties.swift */,
+				85C46DD51E1229C60020E3BF /* TranslationEntry+CoreDataClass.swift */,
+				85C46DD61E1229C60020E3BF /* TranslationEntry+CoreDataProperties.swift */,
+				85C46DD71E1229C60020E3BF /* EnglishDefinition+CoreDataClass.swift */,
+				85C46DD81E1229C60020E3BF /* EnglishDefinition+CoreDataProperties.swift */,
 			);
 			name = "NSManagedObject subclasses";
 			sourceTree = "<group>";
@@ -471,18 +465,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				852633891DF6BB5B00621DBA /* ChineseEntry+CoreDataClass.swift in Sources */,
 				85F7F1BA1DF1347D00F4FBFB /* DictionaryModel.xcdatamodeld in Sources */,
-				8526338D1DF6BB5B00621DBA /* Entry+CoreDataClass.swift in Sources */,
-				8526338C1DF6BB5B00621DBA /* EnglishEntry+CoreDataProperties.swift in Sources */,
-				852633A31DF7290500621DBA /* Entry+CoreDataProperties.swift in Sources */,
 				8525747F1DFD43E90034993D /* DictionaryExport.swift in Sources */,
+				85C46DDA1E1229C60020E3BF /* TranslationEntry+CoreDataProperties.swift in Sources */,
 				852633A81DF8171E00621DBA /* Importer.swift in Sources */,
 				852574841DFFB83B0034993D /* DictionaryExportInfo.swift in Sources */,
-				8526338B1DF6BB5B00621DBA /* EnglishEntry+CoreDataClass.swift in Sources */,
-				8526338A1DF6BB5B00621DBA /* ChineseEntry+CoreDataProperties.swift in Sources */,
+				85C46DDB1E1229C60020E3BF /* EnglishDefinition+CoreDataClass.swift in Sources */,
 				85F7F1BC1DF134EF00F4FBFB /* DataController.swift in Sources */,
+				85C46DDC1E1229C60020E3BF /* EnglishDefinition+CoreDataProperties.swift in Sources */,
 				852633761DF5D64000621DBA /* Dictionary.swift in Sources */,
+				85C46DD91E1229C60020E3BF /* TranslationEntry+CoreDataClass.swift in Sources */,
 				852633A61DF8112A00621DBA /* Translation.swift in Sources */,
 				852574691DFA91260034993D /* String+md5.swift in Sources */,
 			);

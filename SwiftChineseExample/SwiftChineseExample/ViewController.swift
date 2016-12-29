@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         do {
             // Latest CC-CEDICT
             let exportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
-            let export = DictionaryExport(exportInfo: dictionaryExportInfo!)
+            let export = DictionaryExport(exportInfo: exportInfo!)
             
             export.download(onCompletion: { (exportContent, error) in
                 guard error == nil else {
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
                 print("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
                 
                 // Do an import
-                let importer = Importer(dictionaryExport: dictionaryExport)
+                let importer = Importer(dictionaryExport: export)
                 importer.importTranslations(onProgress: { (totalEntries, progressedEntries) in
                     // Progress update
                     debugPrint("progressedEntries: \(progressedEntries), totalEntries: \(totalEntries)")

@@ -13,8 +13,8 @@ public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
     // MARK: - Core Data fetch methods
-    public func fetchEntryObject(withLineHash: String) -> Entry? {
-        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+    public func fetchEntryObject(withLineHash: String) -> TranslationEntry? {
+        let fetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         let lineHashPredicate = NSPredicate(format: "lineHash == %@", argumentArray: [withLineHash])
         fetchRequest.predicate = lineHashPredicate
         
@@ -34,20 +34,17 @@ public class Dictionary: NSObject {
         }
     }
     
-    public func fetchEntryObject(forSimplifiedChinese: String) -> Entry? {
-        let chineseEntryFetchRequest: NSFetchRequest<ChineseEntry> = ChineseEntry.fetchRequest()
+    public func fetchEntryObject(forSimplifiedChinese: String) -> TranslationEntry? {
+        let translationEntryFetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [forSimplifiedChinese])
-        chineseEntryFetchRequest.predicate = simplifiedPredicate
+        translationEntryFetchRequest.predicate = simplifiedPredicate
         
         do {
-            let results = try DataController.sharedInstance.getContext().fetch(chineseEntryFetchRequest)
+            let results = try DataController.sharedInstance.getContext().fetch(translationEntryFetchRequest)
             debugPrint(results.count)
             
             if results.count > 0 {
-                let chineseEntry = results[0]
-                let entry = chineseEntry.inEntry
-                
-                return entry
+                return results[0]
             }
             else {
                 return nil
@@ -61,7 +58,7 @@ public class Dictionary: NSObject {
     
     // MARK - Get dictionary info (from Core Data)
     public func numberOfEntries() -> Int {
-        let allEntriesFetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+        let allEntriesFetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         
         do {
             let results = try DataController.sharedInstance.getContext().fetch(allEntriesFetchRequest)

@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2657" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="ChineseEntry" representedClassName="ChineseEntry" syncable="YES">
-        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="simplified" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="traditional" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="inChinese" inverseEntity="Entry" syncable="YES"/>
-    </entity>
-    <entity name="EnglishEntry" representedClassName="EnglishEntry" syncable="YES">
+    <entity name="EnglishDefinition" representedClassName="EnglishDefinition" syncable="YES">
         <attribute name="english" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="inEnglish" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="inTranslationEntry" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TranslationEntry" inverseName="inEnglish" inverseEntity="TranslationEntry" syncable="YES"/>
     </entity>
-    <entity name="Entry" representedClassName="Entry" syncable="YES">
+    <entity name="TranslationEntry" representedClassName="TranslationEntry" syncable="YES">
         <attribute name="added" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastMofified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lineHash" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="inChinese" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChineseEntry" inverseName="inEntry" inverseEntity="ChineseEntry" syncable="YES"/>
-        <relationship name="inEnglish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EnglishEntry" inverseName="inEntry" inverseEntity="EnglishEntry" syncable="YES"/>
+        <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="simplified" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="traditional" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="inEnglish" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EnglishDefinition" inverseName="inTranslationEntry" inverseEntity="EnglishDefinition" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ChineseEntry" positionX="-54" positionY="-9" width="128" height="105"/>
-        <element name="EnglishEntry" positionX="-36" positionY="9" width="128" height="75"/>
-        <element name="Entry" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="EnglishDefinition" positionX="-36" positionY="9" width="128" height="75"/>
+        <element name="TranslationEntry" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
