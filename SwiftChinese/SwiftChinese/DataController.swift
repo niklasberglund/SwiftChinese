@@ -21,7 +21,7 @@ public class DataController: NSObject {
         }
         
         guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Error initializing mom from: \(modelURL)")
+            fatalError("Error initializing momd from: \(modelURL)")
         }
         
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
@@ -33,6 +33,9 @@ public class DataController: NSObject {
         let docUrl = urls[urls.endIndex-1]
         
         let storeUrl = docUrl.appendingPathComponent("DictionaryModel.sqlite")
+        
+        debugPrint("Initiated momd from: \(modelURL)")
+        debugPrint("Using store at: \(storeUrl)")
         
         do {
             //try FileManager.default.removeItem(at: storeUrl)
