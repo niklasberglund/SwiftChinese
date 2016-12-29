@@ -2,7 +2,7 @@
 //  TranslationEntry+CoreDataProperties.swift
 //  SwiftChinese
 //
-//  Created by Niklas Berglund on 2016-12-27.
+//  Created by Niklas Berglund on 2016-12-30.
 //  Copyright © 2016 Klurig. All rights reserved.
 //
 
@@ -22,6 +22,7 @@ extension TranslationEntry {
     @NSManaged public var pinyin: String?
     @NSManaged public var simplified: String?
     @NSManaged public var traditional: String?
+    @NSManaged public var identifierHash: String?
     @NSManaged public var inEnglish: NSSet?
 
 }

@@ -14,6 +14,12 @@ public class Translation: NSObject {
     var traditionalChinese: String
     var englishDefinitions: [String]
     var lineHash: String
+    var identifierHash: String {
+        get {
+            let chineseJoined = self.simplifiedChinese + self.traditionalChinese + self.pinyin
+            return chineseJoined.md5()
+        }
+    }
     
     private var translationEntry: TranslationEntry?
     

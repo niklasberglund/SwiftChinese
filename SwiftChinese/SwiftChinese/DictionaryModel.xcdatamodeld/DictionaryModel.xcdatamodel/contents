@@ -6,6 +6,7 @@
     </entity>
     <entity name="TranslationEntry" representedClassName="TranslationEntry" syncable="YES">
         <attribute name="added" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifierHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastMofified" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lineHash" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="pinyin" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,6 +16,6 @@
     </entity>
     <elements>
         <element name="EnglishDefinition" positionX="-36" positionY="9" width="128" height="75"/>
-        <element name="TranslationEntry" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="TranslationEntry" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>
