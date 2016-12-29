@@ -40,7 +40,8 @@ public class DictionaryExportInfo: NSObject {
         do {
             let downloadPageHtml = try String(contentsOf:fromUrl)
             
-            let instance = try createInstanceFrom(html: downloadPageHtml)
+            let baseUrl = fromUrl.deletingLastPathComponent()
+            let instance = try createInstanceFrom(html: downloadPageHtml, baseUrl:baseUrl)
             
             return instance
         }
@@ -52,7 +53,7 @@ public class DictionaryExportInfo: NSObject {
         }
     }
     
-    class func createInstanceFrom(html: String) throws -> DictionaryExportInfo {
+    class func createInstanceFrom(html: String, baseUrl: URL) throws -> DictionaryExportInfo {
         let scanner = Scanner(string: html)
         
         var latestReleaseResult: NSString?
@@ -79,8 +80,8 @@ public class DictionaryExportInfo: NSObject {
         let latestReleaseDate = dateFormatter.date(from: latestReleaseResult as! String)
         
         // Set up zip archive URL object
-        let zipArchiveString = "https://www.mdbg.net/chindict/" + (zipArchiveResult! as String)
-        let zipArchiveUrl = URL(string: zipArchiveString)
+        let zipArchiveString = (zipArchiveResult! as String)
+        let zipArchiveUrl = baseUrl.appendingPathComponent(zipArchiveString)
         
         // Validate results
         // TODO: better validation
@@ -88,6 +89,6 @@ public class DictionaryExportInfo: NSObject {
             throw ExportInfoError.ParseHTMLFailed
         }
         
-        return DictionaryExportInfo(releaseDate: latestReleaseDate!, numberOfEntries: Int(numberOfEntriesResult!.intValue), zipArchive: zipArchiveUrl!)
+        return DictionaryExportInfo(releaseDate: latestReleaseDate!, numberOfEntries: Int(numberOfEntriesResult!.intValue), zipArchive: zipArchiveUrl)
     }
 }
