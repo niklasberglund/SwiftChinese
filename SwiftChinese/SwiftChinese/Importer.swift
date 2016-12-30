@@ -157,6 +157,7 @@ public class Importer: NSObject {
         
         translationEntry.added = Date() as NSDate
         translationEntry.lineHash = translation.lineHash
+        translationEntry.identifierHash = translation.identifierHash
         translationEntry.lastMofified = Date() as NSDate
     }
     
