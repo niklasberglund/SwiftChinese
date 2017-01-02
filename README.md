@@ -1,5 +1,5 @@
 # SwiftChinese
-Core Data framework for translating between Chinese and English with CC-CEDICT
+Swift 3 framework for translating between Chinese and English with CC-CEDICT using Core Data.
 
 ## Usage example
 
