@@ -3,7 +3,7 @@ Swift 3 framework for translating between Chinese and English with CC-CEDICT usi
 
 ## Usage example
 
-```
+```swift
 do {
     // Latest CC-CEDICT
     let exportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
