@@ -19,6 +19,7 @@ class ViewController: UIViewController {
             let exportInfo = try DictionaryExportInfo.latestDictionaryExportInfo()
             let export = DictionaryExport(exportInfo: exportInfo!)
             
+            // Download the dictionary export
             export.download(onCompletion: { (exportContent, error) in
                 guard error == nil else {
                     debugPrint("Unable to download dictionary export. Aborting.")
@@ -27,7 +28,7 @@ class ViewController: UIViewController {
                 
                 // Dictionary object used for getting translations
                 let dictionary = Dictionary()
-                print("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
+                debugPrint("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
                 
                 // Do an import
                 let importer = Importer(dictionaryExport: export)
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
                     // Progress update
                     debugPrint("progressedEntries: \(progressedEntries), totalEntries: \(totalEntries)")
                 }, whenFinished: { (error, newEntries, updatedEntries, removedEntries) in
-                    print("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
+                    debugPrint("Number of entries in dictionary before import: " + String(dictionary.numberOfEntries()))
                 })
             })
         }
