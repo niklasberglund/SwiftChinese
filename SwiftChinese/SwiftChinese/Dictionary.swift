@@ -34,6 +34,8 @@ public class Dictionary: NSObject {
         }
     }
     
+    // TODO: remove this one and use fetchEntryObjects(:) instead. There can be several entries for one character or set of characters.
+    @available(*, deprecated, message: "Replacing this with fetchEntryObjects(:)")
     public func fetchEntryObject(forSimplifiedChinese: String) -> TranslationEntry? {
         let translationEntryFetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [forSimplifiedChinese])
