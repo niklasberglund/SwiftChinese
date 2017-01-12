@@ -21,6 +21,14 @@ public class Dictionary: NSObject {
         return self.translationsFor(entryObjects: entryObjects)
     }
     
+    public func translationsFor(traditionalChinese: String) -> [Translation] {
+        let traditionalPredicate = NSPredicate(format: "traditional == %@", argumentArray: [traditionalChinese])
+        
+        let entryObjects = self.fetchEntryObjects(forPredicate: traditionalPredicate)
+        
+        return self.translationsFor(entryObjects: entryObjects)
+    }
+    
     public func translationsFor(english: String) -> [Translation] {
         let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
         
