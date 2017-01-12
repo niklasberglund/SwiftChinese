@@ -13,6 +13,19 @@ public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
     // MARK: - Search translation entries
+    public func translationsFor(simplifiedChinese: String) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
+        
+        return self.translationsFor(entryObjects: entryObjects)
+    }
+    
+    public func translationsFor(english: String) -> [Translation] {
+        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
+        
+        return self.translationsFor(englishDefinitions: englishDefinitions)
+    }
+    
+    // MARK: - Internal methods for converting from Core Data objects to Translation
     func translationsFor(entryObjects: [TranslationEntry]) -> [Translation] {
         var translations = [Translation]()
         
@@ -34,18 +47,6 @@ public class Dictionary: NSObject {
         }
         
         return translations
-    }
-    
-    public func translationsFor(simplifiedChinese: String) -> [Translation] {
-        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
-        
-        return self.translationsFor(entryObjects: entryObjects)
-    }
-    
-    public func translationsFor(english: String) -> [Translation] {
-        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
-        
-        return self.translationsFor(englishDefinitions: englishDefinitions)
     }
     
     // MARK: - Core Data fetch methods
