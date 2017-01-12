@@ -43,7 +43,7 @@ public class Importer: NSObject {
         
         for translationObject in translationArray {
             // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
-            if let _ = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash) {
+            if let _ = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash!) {
                 // Exists and up to date
             }
             else {
