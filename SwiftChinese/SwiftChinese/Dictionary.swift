@@ -31,6 +31,12 @@ public class Dictionary: NSObject {
         return self.translationsFor(entryPredicate: simplifiedPredicate)
     }
     
+    public func translationsContaining(simplifiedChinese: String) -> [Translation] {
+        let simplifiedPredicate = NSPredicate(format: "simplified CONTAINS %@", argumentArray: [simplifiedChinese])
+        
+        return self.translationsFor(entryPredicate: simplifiedPredicate)
+    }
+    
     public func translationsFor(traditionalChinese: String) -> [Translation] {
         let traditionalPredicate = NSPredicate(format: "traditional == %@", argumentArray: [traditionalChinese])
         
