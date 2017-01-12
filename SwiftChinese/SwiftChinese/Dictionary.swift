@@ -61,6 +61,12 @@ public class Dictionary: NSObject {
         return self.fetchEntryObjects(forPredicate: simplifiedPredicate)
     }
     
+    public func fetchEntryObjects(forTraditionalChinese: String) -> [TranslationEntry] {
+        let traditionalPredicate = NSPredicate(format: "traditional == %@", argumentArray: [forTraditionalChinese])
+        
+        return self.fetchEntryObjects(forPredicate: traditionalPredicate)
+    }
+    
     // TODO: remove this one and use fetchEntryObjects(:) instead. There can be several entries for one character or set of characters.
     @available(*, deprecated, message: "Replacing this with fetchEntryObjects(:)")
     public func fetchEntryObject(forSimplifiedChinese: String) -> TranslationEntry? {
