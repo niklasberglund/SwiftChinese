@@ -13,20 +13,22 @@ public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
     // MARK: - Search translation entries
+    public func translationsFor(entryPredicate: NSPredicate) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forPredicate: entryPredicate)
+        
+        return self.translationsFor(entryObjects: entryObjects)
+    }
+    
     public func translationsFor(simplifiedChinese: String) -> [Translation] {
         let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [simplifiedChinese])
         
-        let entryObjects = self.fetchEntryObjects(forPredicate: simplifiedPredicate)
-        
-        return self.translationsFor(entryObjects: entryObjects)
+        return self.translationsFor(entryPredicate: simplifiedPredicate)
     }
     
     public func translationsFor(traditionalChinese: String) -> [Translation] {
         let traditionalPredicate = NSPredicate(format: "traditional == %@", argumentArray: [traditionalChinese])
         
-        let entryObjects = self.fetchEntryObjects(forPredicate: traditionalPredicate)
-        
-        return self.translationsFor(entryObjects: entryObjects)
+        return self.translationsFor(entryPredicate: traditionalPredicate)
     }
     
     public func translationsFor(english: String) -> [Translation] {
