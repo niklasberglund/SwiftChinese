@@ -19,6 +19,12 @@ public class Dictionary: NSObject {
         return self.translationsFor(entryObjects: entryObjects)
     }
     
+    public func translationsFor(englishDefinitionPredicate: NSPredicate) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forPredicate: englishDefinitionPredicate)
+        
+        return self.translationsFor(entryObjects: entryObjects)
+    }
+    
     public func translationsFor(simplifiedChinese: String) -> [Translation] {
         let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [simplifiedChinese])
         
@@ -32,7 +38,9 @@ public class Dictionary: NSObject {
     }
     
     public func translationsFor(english: String) -> [Translation] {
-        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
+        let englishPredicate = NSPredicate(format: "english == %@", argumentArray: [english])
+        
+        let englishDefinitions = self.fetchEnglishDefinitionObjects(forPredicate: englishPredicate)
         
         return self.translationsFor(englishDefinitions: englishDefinitions)
     }
@@ -77,9 +85,9 @@ public class Dictionary: NSObject {
         }
     }
     
-    func fetchEnglishDefinitionObjects(forEnglish: String) -> [EnglishDefinition] {
+    func fetchEnglishDefinitionObjects(forPredicate: NSPredicate) -> [EnglishDefinition] {
         let fetchRequest: NSFetchRequest<EnglishDefinition> = EnglishDefinition.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "english == %@", argumentArray: [forEnglish])
+        fetchRequest.predicate = forPredicate
         
         do {
             let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
