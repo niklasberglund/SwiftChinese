@@ -14,7 +14,9 @@ public class Dictionary: NSObject {
     
     // MARK: - Search translation entries
     public func translationsFor(simplifiedChinese: String) -> [Translation] {
-        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
+        let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [simplifiedChinese])
+        
+        let entryObjects = self.fetchEntryObjects(forPredicate: simplifiedPredicate)
         
         return self.translationsFor(entryObjects: entryObjects)
     }
@@ -91,18 +93,6 @@ public class Dictionary: NSObject {
         else {
             return nil
         }
-    }
-    
-    public func fetchEntryObjects(forSimplifiedChinese: String) -> [TranslationEntry] {
-        let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [forSimplifiedChinese])
-        
-        return self.fetchEntryObjects(forPredicate: simplifiedPredicate)
-    }
-    
-    public func fetchEntryObjects(forTraditionalChinese: String) -> [TranslationEntry] {
-        let traditionalPredicate = NSPredicate(format: "traditional == %@", argumentArray: [forTraditionalChinese])
-        
-        return self.fetchEntryObjects(forPredicate: traditionalPredicate)
     }
     
     // TODO: remove this one and use fetchEntryObjects(:) instead. There can be several entries for one character or set of characters.
