@@ -2,6 +2,22 @@
 Swift 3 framework for translating between Chinese and English with CC-CEDICT using Core Data.
 
 ## Usage example
+### Searching translations
+Translations are returned as _Translation_ objects which holds the word in Chinese and English definitions.
+
+#### Search by simplified Chinese
+```swift
+let dictionary = Dictionary()
+let translations: [Translation] = dictionary.translationsFor(simplifiedChinese: "好")
+```
+
+#### Search by English definition
+```swift
+let dictionary = Dictionary()
+let translations: [Translation] = dictionary.translationsFor(english: "good")
+```
+
+### Importing latest CC-CEDICT data
 
 ```swift
 do {
