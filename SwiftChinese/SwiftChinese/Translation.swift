@@ -9,11 +9,11 @@
 import Foundation
 
 public class Translation: NSObject {
-    var pinyin: String
-    var simplifiedChinese: String
-    var traditionalChinese: String
-    var englishDefinitions: [String]
-    var lineHash: String
+    var pinyin: String = ""
+    var simplifiedChinese: String = ""
+    var traditionalChinese: String = ""
+    var englishDefinitions: [String] = []
+    var lineHash: String?
     var identifierHash: String {
         get {
             let chineseJoined = self.simplifiedChinese + self.traditionalChinese + self.pinyin
@@ -21,25 +21,21 @@ public class Translation: NSObject {
         }
     }
     
-    private var translationEntry: TranslationEntry?
-    
     override public var description: String {
         let englishDefinitionsString = englishDefinitions.joined(separator: ", ")
         return "(simplifiedChinese: \(simplifiedChinese), pinyin: \(pinyin), englishDefinitions: [\(englishDefinitionsString)])"
     }
     
     init(populateFromLine: String) {
-        self.translationEntry = nil
-        
-        self.pinyin = ""
-        self.simplifiedChinese = ""
-        self.traditionalChinese = ""
-        self.englishDefinitions = []
-        self.lineHash = ""
-        
         super.init()
         
         populate(fromLine: populateFromLine)
+    }
+    
+    public init(populateFromEntry: TranslationEntry) {
+        super.init()
+        
+        self.populate(fromEntry: populateFromEntry)
     }
     
     func populate(fromLine: String) -> Void {
@@ -75,11 +71,20 @@ public class Translation: NSObject {
         self.simplifiedChinese = simplifiedChinese as! String
         self.traditionalChinese = traditionalChinese as! String
         self.englishDefinitions = englishDefintionsArray
+    }
+    
+    func populate(fromEntry: TranslationEntry) {
+        self.simplifiedChinese = fromEntry.simplified!
+        self.traditionalChinese = fromEntry.traditional!
+        self.pinyin = fromEntry.pinyin!
         
-        //debugPrint(self.lineHash)
-        //debugPrint(simplifiedChinese!)
-        //debugPrint(traditionalChinese!)
-        //debugPrint(pinyin!)
-        //debugPrint(englishDefinitions)
+        var englishDefinitions = [String]()
+        
+        for setObject in fromEntry.inEnglish! {
+            let englishDefinition = setObject as! EnglishDefinition
+            englishDefinitions.append(englishDefinition.english!)
+        }
+        
+        self.englishDefinitions = englishDefinitions
     }
 }
