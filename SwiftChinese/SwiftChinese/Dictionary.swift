@@ -12,6 +12,20 @@ import CoreData
 public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
+    // MARK: - Search translation entries
+    public func translationsFor(simplifiedChinese: String) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
+        
+        var translations = [Translation]()
+        
+        for entry in entryObjects {
+            let translationObject = Translation(populateFromEntry: entry)
+            translations.append(translationObject)
+        }
+        
+        return translations
+    }
+    
     // MARK: - Core Data fetch methods
     public func fetchEntryObject(withLineHash: String) -> TranslationEntry? {
         let fetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
