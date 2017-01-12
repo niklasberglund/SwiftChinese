@@ -13,9 +13,7 @@ public class Dictionary: NSObject {
     static let sharedInstance = Dictionary()
     
     // MARK: - Search translation entries
-    public func translationsFor(simplifiedChinese: String) -> [Translation] {
-        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
-        
+    func translationsFor(entryObjects: [TranslationEntry]) -> [Translation] {
         var translations = [Translation]()
         
         for entry in entryObjects {
@@ -24,6 +22,12 @@ public class Dictionary: NSObject {
         }
         
         return translations
+    }
+    
+    public func translationsFor(simplifiedChinese: String) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
+        
+        return self.translationsFor(entryObjects: entryObjects)
     }
     
     // MARK: - Core Data fetch methods
