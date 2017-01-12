@@ -30,10 +30,40 @@ public class Dictionary: NSObject {
         return self.translationsFor(entryObjects: entryObjects)
     }
     
+    public func translationsFor(english: String) -> [Translation] {
+        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
+        debugPrint(englishDefinitions)
+        
+        var translations = [Translation]()
+        
+        for definition in englishDefinitions {
+            let translationEntry = definition.inTranslationEntry
+            let translation = Translation(populateFromEntry: translationEntry!)
+            translations.append(translation)
+        }
+        
+        return translations
+    }
+    
     // MARK: - Core Data fetch methods
     func fetchEntryObjects(forPredicate: NSPredicate) -> [TranslationEntry] {
         let fetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         fetchRequest.predicate = forPredicate
+        
+        do {
+            let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
+            
+            return results
+        }
+        catch {
+            debugPrint(error)
+            return []
+        }
+    }
+    
+    func fetchEnglishDefinitionObjects(forEnglish: String) -> [EnglishDefinition] {
+        let fetchRequest: NSFetchRequest<EnglishDefinition> = EnglishDefinition.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "english == %@", argumentArray: [forEnglish])
         
         do {
             let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
