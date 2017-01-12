@@ -45,6 +45,14 @@ public class Dictionary: NSObject {
         return self.translationsFor(englishDefinitions: englishDefinitions)
     }
     
+    public func translationsContaining(english: String) -> [Translation] {
+        let englishPredicate = NSPredicate(format: "english CONTAINS %@", argumentArray: [english])
+        
+        let englishDefinitions = self.fetchEnglishDefinitionObjects(forPredicate: englishPredicate)
+        
+        return self.translationsFor(englishDefinitions: englishDefinitions)
+    }
+    
     // MARK: - Internal methods for converting from Core Data objects to Translation
     func translationsFor(entryObjects: [TranslationEntry]) -> [Translation] {
         var translations = [Translation]()
