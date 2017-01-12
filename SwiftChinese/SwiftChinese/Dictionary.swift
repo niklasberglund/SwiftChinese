@@ -24,16 +24,7 @@ public class Dictionary: NSObject {
         return translations
     }
     
-    public func translationsFor(simplifiedChinese: String) -> [Translation] {
-        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
-        
-        return self.translationsFor(entryObjects: entryObjects)
-    }
-    
-    public func translationsFor(english: String) -> [Translation] {
-        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
-        debugPrint(englishDefinitions)
-        
+    func translationsFor(englishDefinitions: [EnglishDefinition]) -> [Translation] {
         var translations = [Translation]()
         
         for definition in englishDefinitions {
@@ -43,6 +34,18 @@ public class Dictionary: NSObject {
         }
         
         return translations
+    }
+    
+    public func translationsFor(simplifiedChinese: String) -> [Translation] {
+        let entryObjects = self.fetchEntryObjects(forSimplifiedChinese: simplifiedChinese)
+        
+        return self.translationsFor(entryObjects: entryObjects)
+    }
+    
+    public func translationsFor(english: String) -> [Translation] {
+        let englishDefinitions = self.fetchEnglishDefinitionObjects(forEnglish: english)
+        
+        return self.translationsFor(englishDefinitions: englishDefinitions)
     }
     
     // MARK: - Core Data fetch methods
