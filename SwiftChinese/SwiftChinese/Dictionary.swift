@@ -27,35 +27,12 @@ public class Dictionary: NSObject {
     }
     
     // MARK: - Core Data fetch methods
-    public func fetchEntryObject(withLineHash: String) -> TranslationEntry? {
+    func fetchEntryObjects(forPredicate: NSPredicate) -> [TranslationEntry] {
         let fetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
-        let lineHashPredicate = NSPredicate(format: "lineHash == %@", argumentArray: [withLineHash])
-        fetchRequest.predicate = lineHashPredicate
+        fetchRequest.predicate = forPredicate
         
         do {
             let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
-            
-            if results.count > 0 {
-                return results[0]
-            }
-            else {
-                return nil
-            }
-        }
-        catch {
-            debugPrint(error)
-            return nil
-        }
-    }
-    
-    public func fetchEntryObjects(forSimplifiedChinese: String) -> [TranslationEntry] {
-        let translationEntryFetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
-        let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [forSimplifiedChinese])
-        translationEntryFetchRequest.predicate = simplifiedPredicate
-        
-        do {
-            let results = try DataController.sharedInstance.getContext().fetch(translationEntryFetchRequest)
-            debugPrint(results.count)
             
             return results
         }
@@ -63,6 +40,25 @@ public class Dictionary: NSObject {
             debugPrint(error)
             return []
         }
+    }
+    
+    public func fetchEntryObject(withLineHash: String) -> TranslationEntry? {
+        let lineHashPredicate = NSPredicate(format: "lineHash == %@", argumentArray: [withLineHash])
+        
+        let entryObjects = self.fetchEntryObjects(forPredicate: lineHashPredicate)
+        
+        if entryObjects.count > 0 {
+            return entryObjects[0]
+        }
+        else {
+            return nil
+        }
+    }
+    
+    public func fetchEntryObjects(forSimplifiedChinese: String) -> [TranslationEntry] {
+        let simplifiedPredicate = NSPredicate(format: "simplified == %@", argumentArray: [forSimplifiedChinese])
+        
+        return self.fetchEntryObjects(forPredicate: simplifiedPredicate)
     }
     
     // TODO: remove this one and use fetchEntryObjects(:) instead. There can be several entries for one character or set of characters.
