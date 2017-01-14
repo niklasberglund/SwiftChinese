@@ -9,11 +9,11 @@
 import Foundation
 
 public class Translation: NSObject {
-    var pinyin: String = ""
-    var simplifiedChinese: String = ""
-    var traditionalChinese: String = ""
-    var englishDefinitions: [String] = []
-    var lineHash: String?
+    public var pinyin: String = ""
+    public var simplifiedChinese: String = ""
+    public var traditionalChinese: String = ""
+    public var englishDefinitions: [String] = []
+    public var lineHash: String?
     var identifierHash: String {
         get {
             let chineseJoined = self.simplifiedChinese + self.traditionalChinese + self.pinyin
