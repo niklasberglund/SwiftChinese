@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyHash
 
 public class Translation: NSObject {
     public var pinyin: String = ""
@@ -17,7 +18,7 @@ public class Translation: NSObject {
     var identifierHash: String {
         get {
             let chineseJoined = self.simplifiedChinese + self.traditionalChinese + self.pinyin
-            return chineseJoined.md5()
+            return chineseJoined.digest.md5
         }
     }
     
@@ -41,7 +42,7 @@ public class Translation: NSObject {
     func populate(fromLine: String) -> Void {
         //debugPrint("fromLine: " + fromLine)
         
-        self.lineHash = fromLine.md5()
+        self.lineHash = fromLine.digest.md5
         
         let scanner = Scanner(string: fromLine)
         
