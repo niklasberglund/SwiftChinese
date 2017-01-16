@@ -20,6 +20,7 @@
 		854285041E157376007CBE9B /* TranslationEntry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854285001E157376007CBE9B /* TranslationEntry+CoreDataProperties.swift */; };
 		854285051E157376007CBE9B /* EnglishDefinition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854285011E157376007CBE9B /* EnglishDefinition+CoreDataClass.swift */; };
 		854285061E157376007CBE9B /* EnglishDefinition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854285021E157376007CBE9B /* EnglishDefinition+CoreDataProperties.swift */; };
+		85B1B8AA1E2C878800FF66E7 /* DictionaryModel.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 85F7F1B81DF1347D00F4FBFB /* DictionaryModel.xcdatamodeld */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -299,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				85B1B8AA1E2C878800FF66E7 /* DictionaryModel.xcdatamodeld in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
