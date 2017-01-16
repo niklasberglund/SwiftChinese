@@ -18,6 +18,8 @@ public class Importer: NSObject {
     
     var status: ImportStatus = ImportStatus.Idle
     
+    var importQueue = DispatchQueue(label: "com.swiftchinese.import", attributes: .concurrent)
+    
     enum ImportStatus {
         case Idle
         case Running
@@ -32,70 +34,76 @@ public class Importer: NSObject {
         self.dictionaryExport = dictionaryExport
     }
     
-    public func importTranslations(onProgress: ImportProgressClosure, whenFinished: ImportFinishedClosure) -> Void {
-        let context = DataController.sharedInstance.getContext()
-        
-        let translationArray = translationObjects(fromDictionaryString: self.dictionaryExport.content!)
-        
-        self.beforeImport()
-        
-        var processingIndex = 0
-        
-        for translationObject in translationArray {
-            // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
-            if let _ = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash!) {
-                // Exists and up to date
-            }
-            else {
-                if Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translationObject.simplifiedChinese) != nil {
-                    // The entry exists but some attribute has changed. Update!
-                    debugPrint(translationObject)
-                    self.updateTranslation(translationObject)
-                    self.updatedEntries = self.updatedEntries + 1
+    public func importTranslations(onProgress: @escaping ImportProgressClosure, whenFinished: @escaping ImportFinishedClosure) -> Void {
+        self.importQueue.async {
+            let context = DataController.sharedInstance.getContext()
+            
+            let translationArray = self.translationObjects(fromDictionaryString: self.dictionaryExport.content!)
+            
+            self.beforeImport()
+            
+            var processingIndex = 0
+            
+            for translationObject in translationArray {
+                // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
+                if let _ = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash!) {
+                    // Exists and up to date
                 }
                 else {
-                    // The entry doesn't exist. Insert it
-                    self.insertTranslation(translationObject)
-                    self.newEntries = self.newEntries + 1
+                    if Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translationObject.simplifiedChinese) != nil {
+                        // The entry exists but some attribute has changed. Update!
+                        debugPrint(translationObject)
+                        self.updateTranslation(translationObject)
+                        self.updatedEntries = self.updatedEntries + 1
+                    }
+                    else {
+                        // The entry doesn't exist. Insert it
+                        self.insertTranslation(translationObject)
+                        self.newEntries = self.newEntries + 1
+                    }
                 }
+                
+                if processingIndex % 100 == 0 {
+                    DispatchQueue.main.async {
+                        onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
+                    }
+                }
+                
+                // Batch save
+                if processingIndex % 1000 == 0 {
+                    do {
+                        try context.save()
+                        debugPrint("Saved")
+                    } catch {
+                        debugPrint(error)
+                    }
+                }
+                
+                processingIndex += 1
             }
             
-            if processingIndex % 100 == 0 {
+            // After successful import
+            UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
+            UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
+            
+            // Final save
+            do {
+                try context.save()
+                debugPrint("Saved")
+            } catch {
+                debugPrint(error)
+            }
+            
+            // Final progress update
+            DispatchQueue.main.async {
                 onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
             }
             
-            // Batch save
-            if processingIndex % 1000 == 0 {
-                do {
-                    try context.save()
-                    debugPrint("Saved")
-                } catch {
-                    debugPrint(error)
-                }
-            }
             
-            processingIndex += 1
+            self.afterImport()
+            
+            // TODO: remove CD entities for entries that have been removed from CC-CEDICT
         }
-        
-        // After successful import
-        UserDefaults.standard.setValue(self.dictionaryExport.version, forKey: kDictionaryVersion)
-        UserDefaults.standard.setValue(self.dictionaryExport.exportDate, forKey: kDictionaryReleaseDate)
-        
-        // Final save
-        do {
-            try context.save()
-            debugPrint("Saved")
-        } catch {
-            debugPrint(error)
-        }
-        
-        // Final progress update
-        onProgress(self.dictionaryExport.numberOfEntries!, processingIndex)
-        
-        
-        self.afterImport()
-        
-        // TODO: remove CD entities for entries that have been removed from CC-CEDICT
     }
     
     func translationObjects(fromDictionaryString: String) -> [Translation] {
