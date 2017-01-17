@@ -95,7 +95,7 @@ public class Dictionary: NSObject {
         fetchRequest.predicate = forPredicate
         
         do {
-            let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
+            let results = try DataController.sharedInstance.getPrivateContext().fetch(fetchRequest)
             
             return results
         }
@@ -110,7 +110,7 @@ public class Dictionary: NSObject {
         fetchRequest.predicate = forPredicate
         
         do {
-            let results = try DataController.sharedInstance.getContext().fetch(fetchRequest)
+            let results = try DataController.sharedInstance.getPrivateContext().fetch(fetchRequest)
             
             return results
         }
@@ -141,7 +141,7 @@ public class Dictionary: NSObject {
         translationEntryFetchRequest.predicate = simplifiedPredicate
         
         do {
-            let results = try DataController.sharedInstance.getContext().fetch(translationEntryFetchRequest)
+            let results = try DataController.sharedInstance.getPrivateContext().fetch(translationEntryFetchRequest)
             debugPrint(results.count)
             
             if results.count > 0 {
@@ -162,7 +162,7 @@ public class Dictionary: NSObject {
         let allEntriesFetchRequest: NSFetchRequest<TranslationEntry> = TranslationEntry.fetchRequest()
         
         do {
-            let results = try DataController.sharedInstance.getContext().fetch(allEntriesFetchRequest)
+            let results = try DataController.sharedInstance.getPrivateContext().fetch(allEntriesFetchRequest)
             
             return results.count
         }
