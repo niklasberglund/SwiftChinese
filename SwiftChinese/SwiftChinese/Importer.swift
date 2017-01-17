@@ -18,8 +18,6 @@ public class Importer: NSObject {
     
     var status: ImportStatus = ImportStatus.Idle
     
-    var importQueue = DispatchQueue(label: "com.swiftchinese.import", attributes: .concurrent)
-    
     enum ImportStatus {
         case Idle
         case Running
@@ -35,16 +33,20 @@ public class Importer: NSObject {
     }
     
     public func importTranslations(onProgress: @escaping ImportProgressClosure, whenFinished: @escaping ImportFinishedClosure) -> Void {
-        self.importQueue.async {
-            let context = DataController.sharedInstance.getContext()
-            
+        let context = DataController.sharedInstance.getContext()
+        let privateContext = DataController.sharedInstance.getPrivateContext()
+        
+        privateContext.performAndWait {
             let translationArray = self.translationObjects(fromDictionaryString: self.dictionaryExport.content!)
             
             self.beforeImport()
             
             var processingIndex = 0
             
-            for translationObject in translationArray {
+            for var i in 0...translationArray.count {
+                let translationObject = translationArray[i]
+                debugPrint(i)
+                
                 // First try to fetch by line hash. If found by hash it means the entry exists and all attributes are identical
                 if let _ = Dictionary.sharedInstance.fetchEntryObject(withLineHash: translationObject.lineHash!) {
                     // Exists and up to date
@@ -71,15 +73,18 @@ public class Importer: NSObject {
                 
                 // Batch save
                 if processingIndex % 1000 == 0 {
-                    do {
-                        try context.save()
-                        debugPrint("Saved")
-                    } catch {
-                        debugPrint(error)
+                    context.performAndWait {
+                        do {
+                            try context.save()
+                            debugPrint("Saved")
+                        } catch {
+                            debugPrint(error)
+                        }
                     }
                 }
                 
                 processingIndex += 1
+                i += 1
             }
             
             // After successful import

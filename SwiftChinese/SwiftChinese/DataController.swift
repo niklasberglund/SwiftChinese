@@ -48,4 +48,11 @@ public class DataController: NSObject {
     public func getContext() -> NSManagedObjectContext {
         return managedObjectContext
     }
+    
+    public func getPrivateContext() -> NSManagedObjectContext {
+        let privateContext = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        privateContext.parent = self.managedObjectContext
+        
+        return privateContext
+    }
 }
