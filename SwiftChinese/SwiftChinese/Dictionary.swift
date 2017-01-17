@@ -117,6 +117,12 @@ public class Dictionary: NSObject {
         return self.fetchEntryObjects(forPredicate: traditionalChinesePredicate)
     }
     
+    func fetchEntryObjects(forPinyin: String) -> [TranslationEntry] {
+        let pinyinPredicate = NSPredicate(format: "pinyin == %@", argumentArray: [forPinyin])
+        
+        return self.fetchEntryObjects(forPredicate: pinyinPredicate)
+    }
+    
     func fetchEnglishDefinitionObjects(forPredicate: NSPredicate) -> [EnglishDefinition] {
         let fetchRequest: NSFetchRequest<EnglishDefinition> = EnglishDefinition.fetchRequest()
         fetchRequest.predicate = forPredicate
