@@ -43,7 +43,7 @@ public class Importer: NSObject {
             
             var processingIndex = 0
             
-            for var i in 0...translationArray.count {
+            for var i in 0..<translationArray.count {
                 let translationObject = translationArray[i]
                 debugPrint(i)
                 
