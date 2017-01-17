@@ -189,18 +189,18 @@ public class Importer: NSObject {
     ///
     /// - Parameter translation: translation to delete(used for identifying the Entry)
     func deleteTranslation(_ translation: Translation) -> Void {
-        let entry = Dictionary.sharedInstance.fetchEntryObject(forSimplifiedChinese: translation.simplifiedChinese)
-        let englishDefinitions = entry?.inEnglish
+        let entries = Dictionary.sharedInstance.fetchEntryObjects(forSimplifiedChinese: translation.simplifiedChinese)
         
-        guard entry != nil else {
-            return
-        }
-        
-        DataController.sharedInstance.getContext().delete(entry!)
-        
-        if englishDefinitions != nil {
-            for englishDefinition in englishDefinitions! {
-                DataController.sharedInstance.getContext().delete(englishDefinition as! EnglishDefinition)
+        for entry in entries {
+            let englishDefinitions = entry.inEnglish
+            
+            
+            DataController.sharedInstance.getContext().delete(entry)
+            
+            if englishDefinitions != nil {
+                for englishDefinition in englishDefinitions! {
+                    DataController.sharedInstance.getContext().delete(englishDefinition as! EnglishDefinition)
+                }
             }
         }
     }
