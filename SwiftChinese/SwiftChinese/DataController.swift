@@ -33,6 +33,17 @@ public class DataController: NSObject {
         let docUrl = urls[urls.endIndex-1]
         
         let storeUrl = docUrl.appendingPathComponent("DictionaryModel.sqlite")
+        let prePopulatedStoreUrl = frameworkBundle.url(forResource: "DictionaryModel", withExtension:"sqlite")
+        
+        // Copy if file doesn't exist
+        if FileManager.default.fileExists(atPath: storeUrl.path) == false {
+            do {
+                try FileManager.default.copyItem(at: prePopulatedStoreUrl!, to: storeUrl)
+            }
+            catch {
+                debugPrint(error)
+            }
+        }
         
         debugPrint("Initiated momd from: \(modelURL)")
         debugPrint("Using store at: \(storeUrl)")

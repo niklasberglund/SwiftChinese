@@ -21,6 +21,7 @@
 		854285051E157376007CBE9B /* EnglishDefinition+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854285011E157376007CBE9B /* EnglishDefinition+CoreDataClass.swift */; };
 		854285061E157376007CBE9B /* EnglishDefinition+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854285021E157376007CBE9B /* EnglishDefinition+CoreDataProperties.swift */; };
 		85B1B8AA1E2C878800FF66E7 /* DictionaryModel.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 85F7F1B81DF1347D00F4FBFB /* DictionaryModel.xcdatamodeld */; };
+		85B1B8B61E2F710300FF66E7 /* DictionaryModel.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 85B1B8B51E2F710300FF66E7 /* DictionaryModel.sqlite */; };
 		85F7F1A41DF131FA00F4FBFB /* SwiftChinese.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F7F19A1DF131FA00F4FBFB /* SwiftChinese.framework */; };
 		85F7F1A91DF131FA00F4FBFB /* SwiftChineseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F1A81DF131FA00F4FBFB /* SwiftChineseTests.swift */; };
 		85F7F1AB1DF131FA00F4FBFB /* SwiftChinese.h in Headers */ = {isa = PBXBuildFile; fileRef = 85F7F19D1DF131FA00F4FBFB /* SwiftChinese.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,6 +55,7 @@
 		854285001E157376007CBE9B /* TranslationEntry+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TranslationEntry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		854285011E157376007CBE9B /* EnglishDefinition+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnglishDefinition+CoreDataClass.swift"; sourceTree = "<group>"; };
 		854285021E157376007CBE9B /* EnglishDefinition+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnglishDefinition+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		85B1B8B51E2F710300FF66E7 /* DictionaryModel.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = DictionaryModel.sqlite; sourceTree = "<group>"; };
 		85D299FA1DFA8993003895F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85D299FF1DFA89C9003895F4 /* CommonCrypto.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = CommonCrypto.xcconfig; sourceTree = "<group>"; };
 		85D29A001DFA89ED003895F4 /* iphoneos.modulemap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.module-map"; path = iphoneos.modulemap; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				8526338F1DF6BB6300621DBA /* NSManagedObject subclasses */,
 				85F7F1B81DF1347D00F4FBFB /* DictionaryModel.xcdatamodeld */,
+				85B1B8B51E2F710300FF66E7 /* DictionaryModel.sqlite */,
 				85F7F1BB1DF134EF00F4FBFB /* DataController.swift */,
 			);
 			name = "Core Data";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				85B1B8AA1E2C878800FF66E7 /* DictionaryModel.xcdatamodeld in Resources */,
+				85B1B8B61E2F710300FF66E7 /* DictionaryModel.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
