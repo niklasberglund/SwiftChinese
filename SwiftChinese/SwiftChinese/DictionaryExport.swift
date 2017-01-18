@@ -75,10 +75,14 @@ public class DictionaryExport: NSObject {
                 
                 self.readMetadata()
                 
-                onCompletion(self.content, nil) // Success
+                DispatchQueue.main.async {
+                    onCompletion(self.content, nil) // Success
+                }
             }
             catch {
-                onCompletion(nil, ExportError.UnzipFailed)
+                DispatchQueue.main.async {
+                    onCompletion(nil, ExportError.UnzipFailed)
+                }
             }
         }).resume()
     }
