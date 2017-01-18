@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SwiftChinese'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'Core Data framework for translating between Chinese and English with local CC-CEDICT Core Data store'
 
   s.description      = <<-DESC
@@ -12,7 +12,7 @@ Core Data framework for translating between Chinese and English with local CC-CE
   s.authors          = {
     "Niklas Berglund" => "niklas@klurig.hk"
   }
-  s.source           = { :git => 'https://github.com/niklasberglund/SwiftChinese.git', :tag => 'v0.1.3-alpha' }
+  s.source           = { :git => 'https://github.com/niklasberglund/SwiftChinese.git', :tag => 'v0.1.4-alpha' }
   
   s.dependency 'SwiftyHash'
   s.dependency 'SSZipArchive'
