@@ -1,5 +1,5 @@
 # SwiftChinese
-Swift 3 framework for translating between Chinese and English with CC-CEDICT using Core Data. CC-CEDICT is a CC-BY SA 3.0 licensed English - Chinese dictionary database. Read more about it at [https://cc-cedict.org/wiki/](https://cc-cedict.org/wiki/).
+Swift 3 framework for translating between Chinese and English with CC-CEDICT using Core Data. CC-CEDICT is a CC-BY SA 3.0 licensed English - Chinese dictionary database. Read more about it at [https://cc-cedict.org/wiki/]().
 
 ## What is CC-CEDICT?
 From [https://cc-cedict.org/wiki/]():
