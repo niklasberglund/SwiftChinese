@@ -22,5 +22,5 @@ Core Data framework for translating between Chinese and English with local CC-CE
   s.ios.deployment_target = '8.3'
 
   s.source_files = 'SwiftChinese/SwiftChinese/**/*.{h,swift}'
-  s.resources = 'SwiftChinese/SwiftChinese/DictionaryModel.xcdatamodeld'
+  s.resources = ['SwiftChinese/SwiftChinese/DictionaryModel.xcdatamodeld', 'SwiftChinese/SwiftChinese/DictionaryModel.sqlite']
 end
