@@ -22,6 +22,7 @@ let translations: [Translation] = dictionary.translationsFor(english: "good")
 ```
 
 ### Importing latest CC-CEDICT data
+Error handling omitted for brevity. Remember to catch exceptions.
 
 ```swift
 do {
