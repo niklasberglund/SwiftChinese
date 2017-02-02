@@ -7,7 +7,7 @@ From [https://cc-cedict.org/wiki/]():
 
 ## Usage example
 ### Searching translations
-Translations are returned as _Translation_ objects which holds the word in Chinese and English definitions.
+Translations are returned as _Translation_ objects which holds the word in Chinese and it's English definitions.
 
 #### Search by simplified Chinese
 ```swift
